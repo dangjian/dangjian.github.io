@@ -1,0 +1,53 @@
+# visit https://github.com/mojombo/jekyll/wiki/Configuration for more settings
+
+paginate: 10 # pagination based on number of posts
+paginate_path: "page:num"
+highlighter: true
+markdown: kramdown
+
+
+defaults:
+  -
+    scope:
+      path: "" # empty string for all files
+    values:
+      title: Dang Jian
+
+description: Dang Jian
+author:
+  name: dangjian
+  email: hunterdang@gmail.com
+  github: dangjian
+  weibo: dangjian
+  bio: SOLVING YOUR PROBLEMS BY MAKING YOUR OWN SOFTWARE!
+  email_md5: 396f98e19be58c81f25060b4108595bd
+writer:
+  don:
+    display_name: 薛栋
+    gravatar: 594296827ff9539ded708e45ec92d528
+    email: xuedong369@gmail.com
+  emma:
+    display_name: 李晋
+    gravatar: af6bee6db31ae79eee100c5031156561
+    email: emma@erealm.cn
+  guo:
+    display_name: 郭建刚
+    gravatar: 1a8482e680b0ccd153b724e831956562
+    email: hoveagle@gmail.com
+  zhang:
+    display_name: 张加帅
+    gravatar: c715af96177682bd359e307742016f24
+    email: jiashuai1215@gmail.com
+  dang:
+    display_name: 党建
+    gravatar: 396f98e19be58c81f25060b4108595bd
+    email: hunterdang@gmail.com
+  erealm:
+    display_name: 瑞木
+    gravatar: d7500acdff95da1b6a98acac373cae8b
+    email: hello@erealm.cn
+rss_path: feed.xml
+categories_path: categories.html
+tags_path: tags.html
+
+BASE_PATH:
