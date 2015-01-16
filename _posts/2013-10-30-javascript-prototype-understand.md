@@ -22,26 +22,23 @@ fullview: false
 回到JavaScript中，看看在JavaScript中的闭包应该是什么样子的。依照定义，要形成一个闭包，首先要有一个函数，其次这个函数要引用外部作用域的变量。那么这个函数以及其引用的外部变量所在的作用域（即闭包定义中所说的相关引用环境）共同构成了闭包。这个函数及引用环境会一直保持其状态。这个外部作用域可以是全局作用域，也可以是局部作用域。所以，JavaScript里面的闭包和作用域的概念是息息相关的。如下是两个闭包的典型例子：
 例子1：
 
-```
-var g = 0;
-function closure1(){
-    g++;
-}
-closure1(); 
-```
+    var g = 0;
+    function closure1(){
+        g++;
+    }
+    closure1();
+
 函数closure1引用了全局变量g，所以构成了闭包
 例子2：
 
-```
-function foo(x) {
-    var tmp = 3;
-     function bar(y) {
-        alert(x + y + (++tmp));
+    function foo(x) {
+        var tmp = 3;
+         function bar(y) {
+            alert(x + y + (++tmp));
+        }
+        bar(10);
     }
-    bar(10);
-}
-foo(2);
-```
+    foo(2);
 
 函数bar引用了外部函数foo的变量x和tmp，所以构成了闭包。
 
@@ -49,60 +46,50 @@ foo(2);
 
 构成闭包的方式很好理解，不好理解的是闭包内状态的保持。下面使用一个稍微复杂的闭包例子来说明闭包内变量是如何在整个运行期保持其状态的。例子代码如下：
 
-```
-function buildList(list) {
-    var result = [];
-    for (var i = 0; i < list.length; i++) {
-        var item = 'item' + list[i];
-        result.push( function() {alert(item + ' ' + list[i])} );
+    function buildList(list) {
+        var result = [];
+        for (var i = 0; i < list.length; i++) {
+            var item = 'item' + list[i];
+            result.push( function() {alert(item + ' ' + list[i])} );
+        }
+        return result;
     }
-    return result;
-}
 
-function testList() {
-    var fnlist = buildList([1,2,3]);
-    // Using j only to help prevent confusion -- could use i.
-    for (var j = 0; j < fnlist.length; j++) {
-        fnlist[j]();
+    function testList() {
+        var fnlist = buildList([1,2,3]);
+        // Using j only to help prevent confusion -- could use i.
+        for (var j = 0; j < fnlist.length; j++) {
+            fnlist[j]();
+        }
     }
-}
-testList(); 
-```
+    testList();
 
 我们分析一下这个代码段：
 `buildList`函数内部定义了一个匿名函数，而匿名函数里面访问了外部函数的变量item、list和i。所以构成了一个闭包。
 调用函数`testList`时，首先执行了这行代码：
 
-```
-var fnlist = buildList([1,2,3]);
-```
+    var fnlist = buildList([1,2,3]);
 
 此行代码调用了buildList函数，根据传输的数组[1,2,3]，返回了一个包含有三个函数的数组fnlist。这三个函数是不同的，即fnlist[0] !== fnlist[1]，但是这三个函数指向了相同的函数代码（因为JavaScript是脚本语言，定义的这三个函数时并不会把函数代码复制三份，而是指向同一个代码执行入口）。即都指向了这段代码
-```
-alert(item + ' ' + list[i])
-```
+
+    alert(item + ' ' + list[i])
+
 再来看看经过`buildList([1,2,3])`的执行后，闭包内变量的状态变化情况：
 闭包内的变量主要有这些：result、i、list和item。经过函数的执行：result = [function, function, function]、i=3、list=[1,2,3](传入的参数数组)、item=‘item3’。
 以上就是testList函数中第一行代码执行后发生的变化。接下来执行后续代码：
 
-```
- for (var j = 0; j < fnlist.length; j++) {
-    fnlist[j]();
-}
-```
+     for (var j = 0; j < fnlist.length; j++) {
+        fnlist[j]();
+    }
 
 这段代码是分别执行fnlist数组中的3个函数，因为这三个函数都指向相同的函数入口：
 
-```
-alert(item + ' ' + list[i])
-```
+    alert(item + ' ' + list[i])
 
 所以都是执行这行代码。
 这行代码中用到了item、list和i这三个外部作用域的变量。我们在上面分析中得到，此时i`tem=‘item3’、list=[1,2,3]、i=3`，那么计算这个表达式：
 
-```
-item + ' ' + list[i]
-```
+    item + ' ' + list[i]
 
 返回的结果是‘item3 undefined’。计算了三次，返回相同的结果，所以整个代码执行会alert弹出三次‘item3 undefined’字符串。
 
@@ -125,69 +112,67 @@ item + ' ' + list[i]
 
 例子1：
  
-```
-function foo(x) {
-    var tmp = 3;
-    return function (y) {
-        alert(x + y + (++tmp));
+    function foo(x) {
+        var tmp = 3;
+        return function (y) {
+            alert(x + y + (++tmp));
+        }
     }
-}
-var bar = foo(2); 
-```
+    var bar = foo(2);
+
 例子2：
-```
-var bar;
-function foo(x) {
-    var tmp = 3;
-    bar = function (y) {
-        alert(x + y + (++tmp));
+
+    var bar;
+    function foo(x) {
+        var tmp = 3;
+        bar = function (y) {
+            alert(x + y + (++tmp));
+        }
     }
-}
-foo(2); 
-``` 
+    foo(2);
+
 例子3：
-```
-var obj =（function(){
-     var i=0,a=[];
-     return {
-          Update: function(){i++},
-          List: a
-     }
-})();
-```
+
+    var obj =（function(){
+         var i=0,a=[];
+         return {
+              Update: function(){i++},
+              List: a
+         }
+    })();
+
 ###2. 函数内部使用setInterval和setTimeout函数
-```
-function foo(x){
-    setInterval(function(){alert(x++);} , 5000);
-};
-function foo(x){
-    setTimeout(function(){alert(x++);} , 5000);
-};  
-```
+
+    function foo(x){
+        setInterval(function(){alert(x++);} , 5000);
+    };
+    function foo(x){
+        setTimeout(function(){alert(x++);} , 5000);
+    };
+
 一个错误利用闭包的例子
 
 再回到导致把我绕进去的那个例子，其实这个例子也是一个闭包：
 
-```
-var obj =(function(){
-     var i=0;
-     return {
-          Update: function(){i++;},
-          I: i
-     }
-})(); 
-```
+    var obj =(function(){
+         var i=0;
+         return {
+              Update: function(){i++;},
+              I: i
+         }
+    })();
+
 调用obj.Update后，obj.I的值并没用变化，还保持着初始值0。因为obj.I和函数内部变量i并不是引用关系。i在内部是原始数字类型，并不是复合类型。所以函数内部给匿名对象上的I属性赋值后，这个属性值就再也不会和内部变量i有任何的关系。
 
 修改一下代码，把i这个变量变成一个复合对象：
-```
-var obj =(function(){
-     var i=[];
-     return {
-          Update: function(a){i.push(a);},
-          I: i
-     }
-})();
-obj.Update(1);  
-```
+
+    var obj =(function(){
+         var i=[];
+         return {
+              Update: function(a){i.push(a);},
+              I: i
+         }
+    })();
+    obj.Update(1);
+
 调用Update函数后，闭包内部的i数组变成了[1]，所以obj.I也变成了[1]。这个使用的误区虽然发生在闭包的使用上，但和闭包本身没有任何关联，只是和原始类型和复合类型数据赋值相关。
