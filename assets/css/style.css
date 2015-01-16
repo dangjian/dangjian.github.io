@@ -10,7 +10,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 h1 {
-	font-size: 2.2em;
+	font-size: 2.5em;
 }
 h2 {
 	font-size: 1.8em;
@@ -88,7 +88,6 @@ article .share a:hover {
 
 .post-header h1,.post-header h2 {
 	float: left;
-	margin-left: 20px;
 }
 
 .post-header .meta {
@@ -167,15 +166,18 @@ footer {
 
 .badge { background: #F2756A; }
 
-#nav-menu{
+.nav-menu{
     position: fixed;
-    top: 45px;
+    top: 20px;
     right: 45px;
     z-index: 2000;
 }
-#nav-menu .dropdown-menu {
+.nav-menu .dropdown-menu {
     left: inherit;
     right: 0px;
+}
+.nav-menu .btn {
+	font-size: 1.5em;
 }
 
 ul.dropdown-menu>li>a>i.fa {
