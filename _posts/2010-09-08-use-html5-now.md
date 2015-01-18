@@ -104,16 +104,15 @@ Canvas是HTML5中最让人期待的特性之一，目前大部分的Web浏览器
 创建audio和vedio元素：
 
 	<audio controls="controls">
-		<source src="song.ogg" type="audio/ogg" />
-		<source src="song.mp3" type="audio/mpeg" />
+	    <source src="song.ogg" type="audio/ogg" />
+	    <source src="song.mp3" type="audio/mpeg" />
 	    您的浏览器不支持音频标签！
 	</audio>
 	
 	<video width="320" height="240" controls="controls">
-		<source src="movie.ogg" type="video/ogg" />
-		
-		<source src="movie.mp4" type="video/mp4" />
-		您的浏览器不支持视频标签！
+	    <source src="movie.ogg" type="video/ogg" />
+	    <source src="movie.mp4" type="video/mp4" />
+	    您的浏览器不支持视频标签！
 	</video>
 
 点击这里查看音频和视频标签在浏览器中的效果：[Audio](http://www.w3schools.com/html5/tryit.asp?filename=tryhtml5_audio_simple) - [Vedio](http://www.w3schools.com/html5/tryit.asp?filename=tryhtml5_video_all)
@@ -141,17 +140,17 @@ Web存储有两种方式：localStorage和sessionStorage，参考这里查看[�
 下面的例子演示统计用户访问网站的次数：
 
 	<script type="text/javascript">
-		if (typeof(localStorage) == "undefined") {
-		document.write("你的浏览器不支持Web存储");
-		} else {
-		if (localStorage.pagecount){
-		localStorage.pagecount=Number(localStorage.pagecount) +1;
-		}
-		else{
-		localStorage.pagecount=1;
-		}
-		document.write("您已经光临本站 "+ localStorage.pagecount + " 次了.");
-		}
+	    if (typeof(localStorage) == "undefined") {
+	        document.write("你的浏览器不支持Web存储");
+	    } else {
+	        if (localStorage.pagecount){
+	            localStorage.pagecount=Number(localStorage.pagecount) +1;
+	        }
+	        else{
+	            localStorage.pagecount=1;
+	        }
+	        document.write("您已经光临本站 "+ localStorage.pagecount + " 次了.");
+	    }
 	</script>
 
 点击这里查看运行效果：[Demo](http://www.dang-jian.com/Tools/HTML5Demo/HTML5-Web-Storage.htm)
