@@ -23,9 +23,12 @@ JavaScript, CSS, HTML, HTML5, Node.js, Express.js, Bootstrap, AngularJS, ASP.net
 * [SBG Bio-Registration System](http://www.sbg-fwcms.com/)
 * [eRealm home page](http://www.erealm.cn)
 
+###我的著作
+[![Web前端开发最佳实践](http://images.china-pub.com/ebook3770001-3775000/3770903/zcover.jpg)](http://product.china-pub.com/3770903)
+
 ###联系方式
 * [Github](http://www.github.com/dangjian)
-* [weibo](http://www.weibo.com/dangjian)
+* [Weibo](http://www.weibo.com/dangjian)
 * [Email](mailto:hunterdang@gmail.com)
 
 
