@@ -1,6 +1,6 @@
 {% assign author = site.writer[page.author] %}
 <div class="page-header">
-  <h1><a href="{{ site.BASE_PATH }}/">{{ page.title }}</a> {% if page.tagline %} <small>{{ page.tagline }}</small>{% endif %}</h1>
+  <h1><a href="{{ site.BASE_PATH }}{{page.url}}">{{ page.title }}</a> {% if page.tagline %} <small>{{ page.tagline }}</small>{% endif %}</h1>
 </div>
 
 {{ content }}
