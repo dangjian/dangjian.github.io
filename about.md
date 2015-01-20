@@ -22,7 +22,7 @@ JavaScript, CSS, HTML, HTML5, Node.js, Express.js, Bootstrap, AngularJS, ASP.net
 * [MyStudyBible.com mobile](https://www.mystudybible.com/mobile)
 * [SBG Bio-Registration System](http://www.sbg-fwcms.com/)
 * [eRealm home page](http://www.erealm.cn)
-* [绿城花卉](http://shop.shxlvcheng.com)
+* [绿城花卉](http://shop.sxlvcheng.com)
 
 ###我的著作
 [![Web前端开发最佳实践](http://images.china-pub.com/ebook3770001-3775000/3770903/zcover.jpg)](http://product.china-pub.com/3770903)
