@@ -106,3 +106,4 @@ IE就会以标准模式解析HTML文档。但是某些已有页面由于各种�
 * [Web前端开发最佳实践（1）：前端开发概述](http://www.cnblogs.com/dangjian/p/4228313.html)
 * [Web前端开发最佳实践（2）：前端代码重构](http://www.cnblogs.com/dangjian/p/4233049.html)
 * [Web前端开发最佳实践（3）：前端代码和资源的压缩与合并](http://www.cnblogs.com/dangjian/p/4233049.html)
+* [Web前端开发最佳实践（4）：在页面中添加必要的meta信息](http://www.cnblogs.com/dangjian/p/4235505.html)

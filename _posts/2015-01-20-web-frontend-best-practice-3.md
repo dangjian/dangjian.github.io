@@ -59,6 +59,8 @@ CSS代码压缩工具也有在线、本地应用程序和编译器插件。比�
 目前很流行的前端自动化构建工具[Grunt](http://gruntjs.com) 也可以集成代码和资源的压缩工具。在Grunt的插件列表页面上，有很多的压缩代码和资源文件的插件可用。比如，压缩JavaScript的[grunt-contrib-uglify](https://github.com/gruntjs/grunt-contrib-uglify)插件、压缩CSS代码的[grunt-contrib-cssmin](https://github.com/gruntjs/grunt-contrib-cssmin)插件及压缩图片的[grunt-contrib-imagemin](https://github.com/gruntjs/grunt-contrib-imagemin)插件等。
 
 ## 附录
-* [Web前端开发最佳实践（1）：前端开发概述](http://www.cnblogs.com/dangjian/p/4228313.html)
+
+* [Web前端开发最佳实践（1）：前端开发概述](http://www.cnblogs.com/dangjian/p/4228313.html)
 * [Web前端开发最佳实践（2）：前端代码重构](http://www.cnblogs.com/dangjian/p/4233049.html)
 * [Web前端开发最佳实践（3）：前端代码和资源的压缩与合并](http://www.cnblogs.com/dangjian/p/4233049.html)
+* [Web前端开发最佳实践（4）：在页面中添加必要的meta信息](http://www.cnblogs.com/dangjian/p/4235505.html)

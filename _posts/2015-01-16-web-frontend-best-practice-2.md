@@ -42,5 +42,8 @@ fullview: false
 * 如果是性能提升，要事先检测网站的整体性能并量化，找出性能瓶颈。重构过程中要持续监控性能，并对比性能提升的效果。
 
 ## 附录
+
 * [Web前端开发最佳实践（1）：前端开发概述](http://www.cnblogs.com/dangjian/p/4228313.html)
-* Web前端开发最佳实践（2）：前端代码重构
+* [Web前端开发最佳实践（2）：前端代码重构](http://www.cnblogs.com/dangjian/p/4233049.html)
+* [Web前端开发最佳实践（3）：前端代码和资源的压缩与合并](http://www.cnblogs.com/dangjian/p/4233049.html)
+* [Web前端开发最佳实践（4）：在页面中添加必要的meta信息](http://www.cnblogs.com/dangjian/p/4235505.html)
