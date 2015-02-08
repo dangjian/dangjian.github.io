@@ -9,8 +9,8 @@ permalink: /about/
 
 ###履历
 * 2000年~2007年：西安电子科技大学，硕士学历，人工智能。
-* 2007年~2012年：西安葡萄城信息技术有限公司，程序员，前端工程师。
-* 2012年~今：西安瑞木信息技术有限公司，合伙人，前端开发架构师。
+* 2007年~2014年：西安葡萄城信息技术有限公司，程序员，前端工程师。
+* 2014年~今：西安瑞木信息技术有限公司，合伙人，前端开发架构师。
 
 ###擅长的技术
 JavaScript, CSS, HTML, HTML5, Node.js, Express.js, Bootstrap, AngularJS, ASP.net, Play framework, MongoDB, Oracle, MySQL, MS-SQL, Grunt, Responsive Design, Git

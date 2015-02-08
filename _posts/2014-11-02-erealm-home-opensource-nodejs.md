@@ -2,7 +2,7 @@
 layout: post
 title: 我们为什么要开发一个开源的企业网站？
 author: dang
-categories: [font-end, home]
+categories: [front-end]
 tags: [web, 开源, node.js]
 fullview: false
 ---
