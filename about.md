@@ -17,6 +17,7 @@ JavaScript, CSS, HTML, HTML5, Node.js, Express.js, Bootstrap, AngularJS, ASP.net
 , Mobile Web, Agile Development, PM2
 
 ###参与的项目
+* [辅导王](http://www.52fdw.com/)
 * [SPREAD for ASP.NET](http://www.componentone.com/SuperProducts/SpreadWeb/)
 * [MyStudyBible.com](https://www.mystudybible.com/)
 * [MyStudyBible.com mobile](https://www.mystudybible.com/mobile)
