@@ -16,6 +16,12 @@ permalink: /bestpractice/
 * [4] [当当](http://spu.dangdang.com/1035437335.html)
 * [5] [淘宝](http://detail.tmall.com/item.htm?spm=a230r.1.14.8.F2VRyG&id=43430556886&abbucket=14)
 
+## 试读
+
+* [第一章](http://images.china-pub.com/ebook3770001-3775000/3770903/ch01.pdf)
+* [第二章](http://images.china-pub.com/ebook3770001-3775000/3770903/ch02.pdf)
+* [第三章](http://images.china-pub.com/ebook3770001-3775000/3770903/ch03.pdf)
+
 ## 勘误
 
 [《Web前端开发最佳实践》-勘误列表](http://blog.dang-jian.com/book/2015/01/15/web-frontend-development-best-practices-correct.html)
