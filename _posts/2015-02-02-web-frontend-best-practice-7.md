@@ -147,6 +147,7 @@ IE9、Firefox、Opera、Chrome及Safari都支持内联的SVG。IE8及以下版�
 		margin: 6px;
 		position: relative;
 	}
+
 接下来利用::before伪对象定义图标左下角的实心圆：
 
 	.icon-rss:before {
@@ -159,6 +160,7 @@ IE9、Firefox、Opera、Chrome及Safari都支持内联的SVG。IE8及以下版�
 		position: absolute;
 		border-radius: 50%;
 	}
+	
 如上的代码中，设置元素为绝对定位并定位于左下角。使用border-radius构建一个圆形，然后应用box-shadow，设置圆形内阴影。达到实心圆的效果。
 
 构建完实心圆后，接下来构建右上角的两个半圆弧。这次使用`::after`伪元素。
