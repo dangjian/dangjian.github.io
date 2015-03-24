@@ -46,7 +46,7 @@ fullview: false
 
 ###第7章
 
-1. 第112页第7.2节应该添加以Web Font作为图片的处理方式。已经写了一篇文章单独介绍这个部分：[在WEB网页中，使用合理的技术方案来构建小图标](http://blog.dang-jian.com/web/2015/02/02/web-frontend-best-practice-7.html)
+1. 第112页第7.2节应该添加以Web Font作为图片的处理方式。已经写了一篇文章单独介绍这个部分：[在WEB网页中，使用合理的技术方案来构建小图标](http://www.dang-jian.com/web/2015/02/02/web-frontend-best-practice-7.html)
 
 ###第8章
 

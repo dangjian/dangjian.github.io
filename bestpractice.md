@@ -24,7 +24,7 @@ permalink: /bestpractice/
 
 ## 勘误
 
-[《Web前端开发最佳实践》-勘误列表](http://blog.dang-jian.com/book/2015/01/15/web-frontend-development-best-practices-correct.html)
+[《Web前端开发最佳实践》-勘误列表](http://www.dang-jian.com/book/2015/01/15/web-frontend-development-best-practices-correct.html)
 
 ## 图书中引用网络资源备份
 
