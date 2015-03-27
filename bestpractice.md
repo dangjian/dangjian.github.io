@@ -64,7 +64,7 @@ permalink: /bestpractice/
 
 ## 图书中的示例代码
 
-### [全部打包下载](/bestpractice/source/《Web前端开发最佳实践》-源代码.zip)
+### [全部源码打包下载](/bestpractice/source/《Web前端开发最佳实践》-源代码.zip)
 
 ### 分章浏览
 
