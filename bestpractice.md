@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: 《Web前端开发最佳实践》
 permalink: /bestpractice/
 ---
@@ -64,7 +64,22 @@ permalink: /bestpractice/
 
 ## 图书中的示例代码
 
-TODO
+### [全部打包下载](/bestpractice/source/《Web前端开发最佳实践》-源代码.zip)
+
+### 分章浏览
+
+* [第1章](/bestpractice/source/best-practice-code-1.html)
+* [第2章](/bestpractice/source/best-practice-code-2.html)
+* [第3章](/bestpractice/source/best-practice-code-3.html)
+* [第4章](/bestpractice/source/best-practice-code-4.html)
+* [第5章](/bestpractice/source/best-practice-code-5.html)
+* [第6章](/bestpractice/source/best-practice-code-6.html)
+* [第7章](/bestpractice/source/best-practice-code-7.html)
+* [第8章](/bestpractice/source/best-practice-code-8.html)
+* [第9章](/bestpractice/source/best-practice-code-9.html)
+* [第10章](/bestpractice/source/best-practice-code-10.html)
+* [第11章](/bestpractice/source/best-practice-code-11.html)
+* [第12章](/bestpractice/source/best-practice-code-12.html)
 
 ## 图书中的图片资源下载
 
