@@ -4,6 +4,8 @@
 </div>
 
 <article>
+	{% if page.date != null %}
+
 	<span class="post-date">
 	   {% assign d = page.date | date: "%d" | plus:'0' %}
 	   {{ page.date | date: "%B" }} 
@@ -15,32 +17,34 @@
 	   {% endcase %}
 	   {{ page.date | date: "%Y" }}
 	 </span>
-	  <div class="article_body">
+	{% endif %}
+
+	<div class="article_body">
 	  {{ content }}
 	  </div>
 
-		{% unless page.categories == empty %}
+		{% if page.categories.size > 0 %}
 		<ul class="tag_box list-unstyled list-inline">
 		  <li><i class="fa fa-folder-open"></i></li>
 		  {% assign categories_list = page.categories %}
 		  {% if categories_list.first[0] == null %}
-			{% for category in categories_list %} 
+			{% for category in categories_list %}
 				<li><a href="{{ site.BASE_PATH }}/{{ site.categories_path }}#{{ category }}-ref">
 					{{ category | join: "/" }} <span>({{ site.categories[category].size }})</span>
 					{% unless forloop.last %},{% endunless %}
 				</a></li>
 			{% endfor %}
 		  {% else %}
-			{% for category in categories_list %} 
+			{% for category in categories_list %}
 				<li><a href="{{ site.BASE_PATH }}/{{ site.categories_path }}#{{ category[0] }}-ref">
 					{{ category[0] | join: "/" }} <span>/{{ category[1].size }})</span>
 				</a></li>
 			{% endfor %}
 		  {% endif %}
 		</ul>
-		{% endunless %}  
+		{% endif %}
 
-		{% unless page.tags == empty %}
+		{% if page.tags.size > 0 %}
 		<ul class="list-inline">
 		  <li><i class="fa fa-tags"></i></li>
 		  {% assign tags_list = page.tags %}
@@ -66,7 +70,7 @@
 		  {% endif %}
 		  {% assign tags_list = nil %}
 		</ul>
-		{% endunless %}  
+		{% endif %}
 
 		<hr>
 
