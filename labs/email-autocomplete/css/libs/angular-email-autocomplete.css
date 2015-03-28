@@ -1,0 +1,23 @@
+.ng-auto-complete {
+    list-style: none;
+    position: absolute;
+    left: 0;
+    padding: 0;
+    width: 100%;
+    border: 1px solid #888;
+    border-top: none;
+    z-index: 1;
+    background: #FFF;
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+.ng-auto-complete li {
+    padding: 0.4em;
+}
+
+.ng-auto-complete li:hover {
+    background-color: #4bf;
+}
