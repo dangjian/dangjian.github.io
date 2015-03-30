@@ -23,13 +23,35 @@ angular.module('emailAutoComplete', [])
                         return false;
                     }
                 };
+
+                Array.prototype.push.apply($scope.suggestions, [
+                    "gmail.com",
+                    "googlemail.com",
+                    "yahoo.com",
+                    "yahoo.co.uk",
+                    "hotmail.com",
+                    "hotmail.co.uk",
+                    "live.com",
+                    "msn.com",
+                    "comcast.net",
+                    "sbcglobal.net",
+                    "verizon.net",
+                    "facebook.com",
+                    "outlook.com",
+                    "att.net",
+                    "gmx.com",
+                    "icloud.com",
+                    "me.com",
+                    "mac.com",
+                    "aol.com"
+                ]);
             }],
             link: function ($scope, elem, attrs) {
 
                 var suggestionsDom = angular.element('\
           <ul class="ng-auto-complete" ng-show="searchValue && (suggestions | filter:fillMail).length > 0">\
             <li\
-              ng-repeat="suggestion in suggestions | filter:fillMail "\
+              ng-repeat="suggestion in suggestions | filter:fillMail | orderBy:\'toString()\'"\
               index="{{ $index }}"\
               ng-class="{ active: ($index === selectedIndex) }"\
               ng-bind="searchValue + \'@\' +suggestion"></li>\
