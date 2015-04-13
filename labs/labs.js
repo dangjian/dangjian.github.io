@@ -13,9 +13,11 @@ app.config(['$routeProvider', function ($routeProvider) {
     });
 
     $routeProvider.when("/javascriptclass", {
+        title: 'JavaScript讲义',
         templateUrl: "JavaScriptClass/index.html"
     });
     $routeProvider.when("/javascriptclass/:classId", {
+        title: 'JavaScript讲义',
         templateUrl: function(params){ return "JavaScriptClass/" + params.classId + ".html"}
     });
 
@@ -23,7 +25,10 @@ app.config(['$routeProvider', function ($routeProvider) {
 }]);
 
 app.run(['$rootScope', function($rootScope){
-    $rootScope.compileCode = function(event, next, current) {
+    $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
+        $rootScope.title = current.$$route.title;
+    });
+    $rootScope.compileCode = function() {
         SyntaxHighlighter.highlight();
 
         $(".collapse").collapse();
