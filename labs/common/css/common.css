@@ -1,0 +1,59 @@
+/*body {*/
+    /*width: 960px;*/
+    /*font-size: 16px;*/
+/*}*/
+h1,h2 {
+    font-weight: bold;
+    padding: 0 20px;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+}
+h1 {
+    text-align: center;
+}
+h2 {
+    color: #A6E22E;
+    border-bottom: 1px dashed #999;
+}
+.accordion-toggle {
+    cursor: pointer;
+}
+.tip {
+    background-color: #f5f2f0;
+    padding: 1em 1em 1em 3em;
+    margin: 2em 0em;
+    border-radius: 1.5em;
+    text-shadow: 0 1px white;
+}
+
+ul,ol {
+    list-style: none;
+}
+ul.tip {
+    list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAKCAYAAACXDi8zAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAScAAAEnABIZuYagAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAACSSURBVAiZVY0hDsJQEERfG+RW9wRIBA4DAgMKg6nZIkg4B6fgAFUEw5UQiG1CQNSSDILSfEbOy8zLwq0CKJvuTJIcuAGnti62KUAS4TYPt1e4bSQh6Qt6uOzhWhKZpGHd1sUKuADHnP/cgTcwTq+m4daG22FwhNss3B7hthvk4bYIt2e4Vb9SEiNgAuzLprumsg/n8VnjsKqsSQAAAABJRU5ErkJggg==);
+}
+a {
+    display: inline-block;
+    margin: 0 10px;
+}
+ul.tip li {
+    font-size: 160%;
+    line-height: 160%;
+}
+
+li p {
+    padding-left: 2em;
+}
+img {
+    display: block;
+}
+.item-actions li {
+    display: inline-block;
+}
+.panel-collapse {
+    padding:  0 10px;
+}
+.title-list li {
+    font-size: 160%;
+    line-height: 160%;
+}

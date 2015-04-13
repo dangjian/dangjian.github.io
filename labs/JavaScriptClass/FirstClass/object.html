@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>code: object</title>
+    <script>
+        var o = {
+            foo: 123,
+            p: function(x) {return 2*x;}
+        };
+        console.log('o.foo >>>');
+        console.log(o.foo);
+        console.log('o["foo"] >>>');
+        console.log(o["foo"]);
+        console.log('o.p(1) >>>');
+        console.log(o.p(1));
+        // 2
+
+        var o = {
+            key1: 1,
+            key2: 2
+        };
+
+        console.log('Object.keys(o) >>>');
+        console.log(Object.keys(o));
+        console.log('"key1" in o >>>');
+        console.log('key1' in o);
+
+        var o = {};
+        o.p = 1;
+        console.log('o.p = 1 >>>');
+        console.log(o.p);
+        delete o.p
+        console.log('o.p = 1 >>>');
+        console.log(o.p);
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

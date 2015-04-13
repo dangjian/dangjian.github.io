@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>code: number</title>
+    <script>
+        // case1
+        console.log('0.1+0.2===0.3 >>>');
+        console.log(0.1+0.2===0.3);
+         console.log('0.3/0.1 >>>');
+        console.log(0.3/0.1);
+        /*
+
+        //case2
+        console.log('Math.pow(2, 53) >>>');
+        console.log(Math.pow(2, 53));  // 54个二进制位
+        // 9007199254740992
+        console.log('Math.pow(2, 53) + 1 >>>');
+        console.log(Math.pow(2, 53) + 1);
+        // 9007199254740992
+
+        console.log('Math.pow(2, 53) + 2 >>>');
+        console.log(Math.pow(2, 53) + 2);
+        // 9007199254740994
+
+        console.log('Math.pow(2, 53) + 3 >>>');
+        console.log(Math.pow(2, 53) + 3);
+        // 9007199254740996
+
+        console.log('Math.pow(2, 53) + 4 >>>');
+        console.log(Math.pow(2, 53) + 4);
+        // 9007199254740996
+
+        //case3
+         console.log('1234567890123456789012 >>>');
+        console.log(1234567890123456789012);
+        // 1.2345678901234568e+21
+         console.log('123456789012345678901 >>>');
+        console.log(123456789012345678901);
+        // 123456789012345680000
+         console.log('0.0000003 >>>');
+        console.log(0.0000003);
+        // 3e-7
+         console.log('0.000003 >>>');
+        console.log(0.000003);
+        // 0.000003
+        // case4
+        console.log('Number("xyz") >>>')
+        console.log(Number("xyz"));
+        // NaN
+        console.log('typeof NaN >>>');
+        console.log(typeof NaN);
+        // 'number'
+        console.log('NaN === NaN >>>');
+        console.log(NaN === NaN);
+        // false
+        console.log('0 / 0 >>>');
+        console.log(0 / 0);
+        // NaN
+        var n = null;
+        console.log('n * 32 >>>');
+        console.log(n * 32); // 0
+        console.log('Boolean(NaN) >>>');
+        console.log(Boolean(NaN));
+        // false
+        console.log('isNaN(NaN) >>>');
+        console.log(isNaN(NaN));
+        // true
+        console.log('isNaN("Hello") >>>');
+        console.log(isNaN("Hello"));
+        // true
+        // 相当于
+        console.log('isNaN(Number("Hello")) >>>');
+        console.log(isNaN(Number("Hello")));
+        // true
+        console.log('isNaN({}) >>>');
+        console.log(isNaN({})); // true
+        console.log('isNaN(["xzy"]) >>>');
+        console.log(isNaN(["xzy"])); // true
+        // case5
+        console.log('1 / -0 >>>');
+        console.log(1 / -0);
+        // -Infinity
+
+        console.log('1 / +0 >>>');
+        console.log(1 / +0);
+        // Infinity
+
+        console.log('Infinity === Infinity >>>');
+        console.log(Infinity === Infinity);
+        console.log('Infinity === -Infinity >>>');
+        console.log(Infinity === -Infinity);
+        // false
+
+        console.log('Math.pow(+0, -1) >>>');
+        console.log(Math.pow(+0, -1));
+        // Infinity
+
+        console.log('Math.pow(-0, -1) >>>');
+        console.log(Math.pow(-0, -1));
+
+        // -Infinity
+        console.log('Math.pow(2, 2048) >>>');
+        console.log(Math.pow(2, 2048));
+        // Infinity
+
+        console.log('-Math.pow(2, 2048) >>>');
+        console.log(-Math.pow(2, 2048));
+        // -Infinity
+        console.log('Infinity + Infinity >>>'); // Infinity
+        console.log(Infinity + Infinity); // Infinity
+        console.log('5 * Infinity >>>');// Infinity
+        console.log(5 * Infinity);// Infinity
+        console.log('5 - Infinity >>>'); // -Infinity
+        console.log(5 - Infinity); // -Infinity
+        console.log('Infinity / 5 >>>'); // Infinity
+        console.log(Infinity / 5); // Infinity
+        console.log('5 / Infinity >>>'); // 0
+        console.log(5 / Infinity); // 0
+        console.log('Infinity - Infinity >>>'); // NaN
+        console.log(Infinity - Infinity); // NaN
+        console.log('Infinity / Infinity >>>'); // NaN
+        console.log(Infinity / Infinity); // NaN
+        // case6
+        console.log('parseInt("123") >>>');
+        console.log(parseInt("123"));
+        // 123
+
+        console.log('parseInt(1.23) >>>');
+        console.log(parseInt(1.23));
+        // 1
+        console.log('parseInt("8a") >>>');
+        console.log(parseInt("8a"));
+        // 8
+        console.log('parseInt("abc") >>>');
+        console.log(parseInt("abc"));
+        // NaN
+
+        console.log('parseInt(".3") >>>');
+        console.log(parseInt(".3"));
+        // NaN
+        console.log('parseInt(010) >>>');
+        console.log(parseInt(010));
+        // 8
+
+        console.log('parseInt(0x10) >>>');
+        console.log(parseInt(0x10));
+        // 16
+        console.log('parseInt(1000, 2) >>>');
+        console.log(parseInt(1000, 2));
+        // 8
+
+        console.log('parseInt(1000, 6) >>>');
+        console.log(parseInt(1000, 6));
+        // 216
+
+        console.log('parseInt(1000, 8) >>>');
+        console.log(parseInt(1000, 8));
+        // 512
+        console.log('parseInt(010, 10) >>>');
+        console.log(parseInt(010, 10));
+        // 8
+
+        console.log('parseInt(010, 8) >>>');
+        console.log(parseInt(010, 8));
+        // NaN
+
+        console.log('parseInt(020, 10) >>>');
+        console.log(parseInt(020, 10));
+        // 16
+
+        console.log('parseInt(020, 8) >>>');
+        console.log(parseInt(020, 8));
+        // 14
+        console.log('parseInt("010") >>>');
+        console.log(parseInt("010"));
+        // 10
+
+        console.log('parseInt("010",10) >>>');
+        console.log(parseInt("010",10));
+        // 10
+
+        console.log('parseInt("010",8) >>>');
+        console.log(parseInt("010",8));
+        // 8
+         */
+    </script>
+</head>
+<body>
+
+</body>
+</html>

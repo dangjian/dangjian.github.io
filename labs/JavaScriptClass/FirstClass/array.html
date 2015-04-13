@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>code: array</title>
+    <script>
+        /*
+        // case1
+        var arr = ['a', 'b', 'c'];
+
+        console.log('arr [2] >>>');
+        console.log(arr [2]);
+        // "c"
+        console.log('2 in arr >>>');
+        console.log(2 in arr);
+
+        console.log('arr.length >>>');
+        console.log(arr.length);
+        arr.length = 2;
+        console.log('2 in arr >>>');
+        console.log(2 in arr);
+
+        arr.length = 3;
+        console.log('arr >>>');
+        console.log(arr);
+        console.log('arr.length >>>');
+        console.log(arr.length);
+
+        for (var i in arr){console.log(i)}
+
+        arr.length = 0;
+
+        console.log('arr >>>');
+        console.log(arr);
+        */
+        // case2
+        console.log('map >>>');
+        console.log(
+        [1, 2, 3].map(function(elem, index, arr){
+            return elem * elem;
+        })
+        );
+
+        console.log('forEach >>>');
+        [1, 2, 3].forEach(function(elem, index, arr){
+            console.log("array[" + index + "] = " + elem);
+        });
+
+
+        console.log('filter >>>');
+        console.log(
+        [1,2,3,4,5].filter(function(elem){
+            return (elem>3);
+        })
+        );
+
+        console.log('some >>>');
+        console.log(
+        [1, 2, 3, 4, 5].some(function(elem, index, arr){
+            return elem >= 3;
+        })
+        );
+
+        console.log('every >>>');
+        console.log(
+            [1, 2, 3, 4, 5].every(function(elem, index, arr){
+                return elem >= 3;
+            })
+        )
+
+
+        console.log('reduce >>>');
+        console.log(
+        [1, 2, 3, 4, 5].reduce(function(sum, elem, index, arr){
+            return sum + elem;
+        })
+        );
+
+        console.log('indexOf >>>');
+        var array = [2, 5, 9];
+
+        console.log(array.indexOf(2));
+        // 0
+
+        var users = [{name:"tom", email:"tom@example.com"},
+            {name:"peter", email:"peter@example.com"}];
+
+        users.map(function (user){ return user.email; })
+                .filter(function (email) { return /^t/.test(email); })
+                .forEach(alert);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

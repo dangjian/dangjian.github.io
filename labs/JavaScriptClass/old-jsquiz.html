@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: arial;
+        }
+
+        code {
+            white-space: pre;
+            font-family: "courier new";
+            font-size: .9em;
+            padding: 1em;
+        }
+
+        code.runnable {
+            display: block;
+            background: #333;
+            color: lightgreen;
+        }
+
+        ol,
+        ol ol {
+            margin: 1em 0 0 2em;
+            padding: 0;
+        }
+
+        ol ol {
+            margin-left: 1.5em;
+            list-style: upper-alpha;
+        }
+
+        ol li {
+            padding-bottom: 2em;
+            margin-bottom: 1em;
+            border-bottom: 1px solid #eee;
+
+        }
+
+        ol li li {
+            padding-bottom: 0;
+            margin-bottom: .25em;
+            border-bottom: none;
+        }
+
+        .answer {
+            background: #e1e1e1;
+            margin: 1em;
+            padding: 1em;
+            border: 2px dashed #333;
+        }
+
+        .answer.hidden {
+            display: none;
+        }
+
+        button {
+            margin-top: 1em;
+            display: block;
+        }
+
+        .disclaimer {
+            background: lemonchiffon;
+            font-size: 1em;
+            margin: 0 2em;
+            padding: 0.5em;
+        }
+    </style>
+
+    <script type="text/javascript" src="javascript/gimme.js"></script>
+    <style>[touch-action="none"] {
+        -ms-touch-action: none;
+        touch-action: none;
+    }
+
+    [touch-action="pan-x"] {
+        -ms-touch-action: pan-x;
+        touch-action: pan-x;
+    }
+
+    [touch-action="pan-y"] {
+        -ms-touch-action: pan-y;
+        touch-action: pan-y;
+    }
+
+    [touch-action="scroll"], [touch-action="pan-x pan-y"], [touch-action="pan-y pan-x"] {
+        -ms-touch-action: pan-x pan-y;
+        touch-action: pan-x pan-y;
+    }</style>
+</head>
+
+<body ryt14418="1">
+<div class="disclaimer">
+    <p><strong>Disclaimer: </strong>Of course there are always many ways to solve a problem, so the answers listed make
+        no
+        claim of authority, or even of "best approach." You are welcome to email sstchur(at)yahoo(dot)com if you'd like
+        to see an
+        alternate answer listed.</p>
+</div>
+
+<ol id="questions">
+<li>
+    <p>What is the result of the following?</p>
+
+    <code class="runnable">function foo()
+        {
+        alert(x);
+        var x = 10;
+        }
+        foo();</code>
+
+    <ol>
+        <li>Runtime error</li>
+        <li>Will alert <code>undefined</code></li>
+        <li>WIll alert <code>10</code></li>
+    </ol>
+
+    <button>Answer</button>
+
+    <div class="answer hidden">
+        <p><strong>B.</strong> Why? It is perfectly valid to refer to the variable x before you assign it a value
+            provided that you have declared it somewhere in the function. The Javascript interpreter
+            actually rewrites the above as:</p>
+        <code>function foo()
+            {
+            var x;
+            alert(x);
+            x = 10;
+            }
+            foo();</code>
+        <button>Try it</button>
+    </div>
+</li>
+
+<li>
+    <p>What is the result of the following?</p>
+    <code class="runnable">function foo()
+        {
+        x = 10;
+        alert(x);
+        }
+        foo();
+        alert(x);</code>
+
+    <ol>
+        <li>Runtime error</li>
+        <li>Will alert 10 once</li>
+        <li>Will alert 10, followed by a runtime error</li>
+        <li>Will alert 10 twice</li>
+    </ol>
+
+    <button>Answer</button>
+
+    <div class="answer hidden">
+        <p><strong>D.</strong> Why? x was created as an implicit global, meaning that it springs into existence
+            when first encountered and continues to exist in the global space, even outside of the foo function.</p>
+        <button>Try it</button>
+    </div>
+
+</li>
+
+<li>
+    <p>What is the result of the following?</p>
+    <code class="runnable">function foo()
+        {
+        alert(y);
+        y = 10;
+        }
+        foo();</code>
+
+    <ol>
+        <li>Runtime error</li>
+        <li>Will alert undefined</li>
+        <li>Will alert 10</li>
+    </ol>
+
+    <button>Answer</button>
+
+    <div class="answer hidden">
+        <p><strong>A.</strong> Without the var keyword, what you are attempting to define is an "implicit global"
+            (yes, a real thing in Javascript). But the implicit global only springs into existence when that line is
+            encountered. Since you attempted to reference the variable, y, before it was declared, it will result in
+            a runtime error.</p>
+        <button>Try it</button>
+        (Hint: use Firebug to see the error)
+    </div>
+
+</li>
+
+<li>
+    <p>What is the result of the following?</p>
+    <code class="runnable">function bar()
+        {
+        foo();
+
+        var foo = function()
+        {
+        alert(99);
+        };
+        }
+        bar();</code>
+
+    <ol>
+        <li>Runtime error</li>
+        <li>Will alert 99</li>
+        <li>Neither of the above</li>
+    </ol>
+
+    <button>Answer</button>
+
+    <div class="answer hidden">
+        <p><strong>A.</strong> Javascript rewrites the above as:</p>
+        <code>function bar()
+            {
+            var foo;
+            foo();
+            foo = function()
+            {
+            alert(99);
+            }
+            }
+            bar();</code>
+
+        <p>Javascript recognizes the varible foo as having been declared staright away, but it doesn't
+            get assigned a value until that line of code is encountered. Thus, foo is undefined when the
+            call, foo() attempts to execute.</p>
+        <button>Try it</button>
+        (Hint: use Firebug to see the error)
+    </div>
+</li>
+
+<li>
+    <p>What is the result of the following?</p>
+    <code class="runnable">function bar()
+        {
+        foo()
+
+        function foo()
+        {
+        alert(99);
+        }
+        }
+        bar();</code>
+
+    <ol>
+        <li>Runtime error</li>
+        <li>Will alert 99</li>
+        <li>None of the above</li>
+    </ol>
+
+    <button>Answer</button>
+
+    <div class="answer hidden">
+        <p><strong>B.</strong> This time, foo was declared using a subtly different syntax. The Javascript
+            interpreter sees it as:</p>
+        <code>function bar()
+            {
+            function foo()
+            {
+            alert(99);
+            }
+            foo();
+            }</code>
+        <button>Try it</button>
+    </div>
+
+</li>
+
+<li>
+    <p>What is the result of the following?</p>
+    <code class="runnable">function foo()
+        {
+        for (var i = 0; i &lt; 5; i++)
+        {
+        alert(i);
+        }
+        alert(i);
+        }
+        foo();</code>
+    <ol>
+        <li>Runtime error</li>
+        <li>Will alert: 0, 1, 2, 3, 4, undefined</li>
+        <li>Will alert: 0, 1, 2, 3, 4, {runtime error}</li>
+        <li>Will alert: 0, 1, 2, 3, 4, 5</li>
+    </ol>
+
+    <button>Answer</button>
+
+    <div class="answer hidden">
+        <p><strong>D.</strong> Loops and if-statements do not have scope in Javascript. The variable, i, is
+            scoped to the function foo, but not to the for loop. It continues to exist even after the for loop
+            is finished. Therefore, the recommended syntax is:</p>
+        <code>var i;
+            for (i = 0; i &lt; 5; i++) { ... }</code>
+
+        <p>This makes more explicit, what the Javascript interpreter is already doing for you anyway.</p>
+        <button>Try it</button>
+    </div>
+
+</li>
+
+<li>
+    <p>True or False?</p>
+    <code class="runnable">function Foo()
+        {
+        var bestBand = 'Jimmy Eat World';
+        this.tellMe = function()
+        {
+        alert(bestBand);
+        };
+        }
+
+        var f1 = new Foo();
+        var f2 = new Foo();
+        alert(f1.tellMe === f2.tellMe); // true or false?</code>
+
+    <ol>
+        <li>True</li>
+        <li>False</li>
+    </ol>
+
+    <button>Answer</button>
+
+    <div class="answer hidden">
+        <p><strong>B. False</strong> Each instance of a Foo has its own .tellMe function.</p>
+        <button>Try it</button>
+    </div>
+
+</li>
+
+<li>
+    <p>True or False?</p>
+    <code class="runnable">function Foo()
+        {
+        this.bestBand = 'Jimmy Eat World';
+        }
+        Foo.prototype.tellMe = function()
+        {
+        alert(this.bestBand);
+        };
+
+        var f1 = new Foo();
+        var f2 = new Foo();
+        alert(f1.tellMe === f2.tellMe); // true or false?</code>
+
+    <ol>
+        <li>True</li>
+        <li>False</li>
+    </ol>
+
+    <button>Answer</button>
+
+    <div class="answer hidden">
+        <p><strong>A. True</strong> Using prototype means that the every instance of a Foo shares the same .tellMe
+            function</p>
+        <button>Try it</button>
+    </div>
+
+</li>
+
+<li>
+    <p>What is the result of the following?</p>
+    <code class="runnable">var X =
+        {
+        x: 10,
+        y: 20,
+        foo: X.x * 9
+        };</code>
+    <ol>
+        <li>Runtime error</li>
+        <li>Creates an object like, { x: 10, y: 20, foo: 90 }</li>
+        <li>None of the above</li>
+    </ol>
+
+    <button>Answer</button>
+
+    <div class="answer hidden">
+        <p><strong>A.</strong> X is not fully initialized until the final curly brace, } is reached.
+            But the proeprty foo attempts to access a property of X, before X is fully initialized.</p>
+        <button>Try it</button>
+        (Hint: Use Firebug to see the error)
+    </div>
+</li>
+
+<li>
+    <p>What is the result of the following?</p>
+    <code class="runnable">var X =
+        {
+        x: 10,
+        y: 20,
+        foo: this.x * 9
+        };
+        alert(X.foo); // just for demonstration purposes, not part of the question</code>
+    <ol>
+        <li>Runtime error</li>
+        <li>Creates an object like, { x: 10, y: 20, foo: 90 }</li>
+        <li>Creates an object like, { x: 10, y: 20, foo: undefined }</li>
+        <li>Creates an object like, { x: 10, y: 20, foo: NaN }</li>
+        <li>None of the above</li>
+    </ol>
+
+    <button>Answer</button>
+
+    <div class="answer hidden">
+        <p><strong>D.</strong> "this" does not refer to X, and this.x is therefore undefined. The undefined type
+            multiplied by 9 returns in NaN (which is toxic by the way). In this case, "this" would refer to the
+            Window, so something like this would be acceptable:</p>
+        <code>var X =
+            {
+            x: 10,
+            y: 20,
+            foo: this.location.href
+            };
+        </code>
+        <button>Try it</button>
+    </div>
+</li>
+
+<li>
+    <p>What is the result of the following?</p>
+    <code class="runnable">var i = 5;
+        while (i--)
+        {
+        setTimeout(function()
+        {
+        alert(i);
+        }, 100);
+        }</code>
+    <ol>
+        <li>Will alert: 5, 4, 3, 2, 1</li>
+        <li>Will alert: 4, 3, 2, 1, 0</li>
+        <li>Will alert: 5, 4, 3, 2, 1, 0</li>
+        <li>Will alert: -1, -1, -1, -1, -1</li>
+    </ol>
+
+    <button>Answer</button>
+
+    <div class="answer hidden">
+        <p><strong>D.</strong> The while loop will executes 5 times (until i is 0). The variable, i, will then be
+            decremented one additional time. Each iteration in the loop queues up a setTimeout call,
+            but those calls are non-blocking, so the while loop essentially finishes "immediately" and
+            when it does, the value of i is -1.</p>
+        <button>Try it</button>
+    </div>
+</li>
+
+<li>
+    <p>Rewrite the code in Question 11 to so that it work as "expected" (that is, it alerts 5, 4, 3, 2, 1)</p>
+
+    <ol></ol>
+    <button>Answer</button>
+
+    <div class="answer hidden">
+        <code class="runnable">var i = 5;
+            while (i--)
+            {
+            setTimeout(function(x)
+            {
+            return function()
+            {
+            alert(x);
+            }
+            }(i+1), 100);
+            }</code>
+
+        <p><strong>Why it works:</strong> The while loop will execute 5 times. Each iteration makes a call
+            to setTimeout, passing in a function that is executed immediately and which returns a new function
+            reference. The outer function takes an argument, x, which is given the value of i+1 as the loop
+            iterates. The inner function now has access to x, even after it has seemingly gone out of scope.
+            It's like creating a "snapshot" of i as we loop and storing it away for later use.</p>
+        <button>Try it</button>
+    </div>
+</li>
+
+<li>
+    <p>Using the code in Question 12 as a starting point, modify the code to alert: 5, 4, 3, 2 and then 1,
+        where each alert happens roughly 2 seconds apart.</p>
+
+    <ol></ol>
+    <button>Answer</button>
+
+    <div class="answer hidden">
+        <code class="runnable">var i = 5;
+            while (i--)
+            {
+            setTimeout(function(x)
+            {
+            return function()
+            {
+            alert(x);
+            }
+            }(5-i), i*2000);
+            }</code>
+
+        <p><strong>Why it works:</strong> Because it is essentially the equivalent of:</p>
+        <code>function fn(x)
+            {
+            return function()
+            {
+            alert(x);
+            }
+            }
+            setTimeout(fn(5-4), 8000);
+            setTimeout(fn(5-3), 6000);
+            setTimeout(fn(5-2), 4000);
+            setTimeout(fn(5-1), 2000);
+            setTimeout(fn(5-0), 0);
+        </code>
+        <button>Try it</button>
+    </div>
+</li>
+
+<li>
+    <p>What is the value of y in the following code snippet?</p>
+    <code class="runnable">var x = 10;
+        var y = 'steve_' + (x == 10) ? 'C' : 'D';
+        alert(y); // For demonstrations purposes, not part of the question</code>
+
+    <ol>
+        <li>'steve_C'</li>
+        <li>'steve_D'</li>
+        <li>'C'</li>
+        <li>'D'</li>
+        <li>None of the above</li>
+    </ol>
+    <button>Answer</button>
+
+    <div class="answer hidden">
+        <p><strong>C.</strong> Parenthesis are evaluated first and the result of (10 == 10) is true.
+            Next, 'steve_' will be concatenated with the bool, true, which will be coerced into a string
+            'true', yielding 'steve_true' Finally, 'steve_true' will be evaluated for "truthfulness"
+            (that is, is it considered truth-like, or false-like?) and the result is truth-like (as it is
+            not: null, undefined, "", 0, NaN, or false). Since the left side of the ? evaluates to true,
+            the 'C' will be used as the return value.</p>
+
+        <button>Try it</button>
+    </div>
+</li>
+
+<li>
+    <p>Rewrite the code in Question 14 to produce the "expected" result (that is, 'Steve_C')</p>
+
+    <ol></ol>
+    <button>Answer</button>
+
+    <div class="answer hidden">
+        <code class="runnable">var x = 10;
+            var y = 'steve_' + (x == 10 ? 'C' : 'D');
+            alert(y); // For demonstration purposes, not part of the question</code>
+
+        <p><strong>Why it works:</strong> Proper use of parenthesis ensures that the ternary operator is evaluated
+            first and the result is then concatenated with 'steve_'</p>
+
+        <button>Try it</button>
+    </div>
+</li>
+
+<li>
+    <p>Write a function, setTimeoutX, which takes 3 arguments (fnRef, ms, a). fnRef is a reference to a function
+        that should be executed after ms milliseconds have elapsed, and the variable, a, should be passed into
+        fnRef, when that function executes.</p>
+
+    <ol></ol>
+    <button>Answer</button>
+
+    <div class="answer hidden">
+        <code class="runnable">
+            function setTimeoutX(fnRef, ms, a)
+            {
+            setTimeout(function()
+            {
+            fnRef(a);
+            }, ms);
+            }
+
+            // test it out
+            function foo(x)
+            {
+            alert(x);
+            }
+            setTimeoutX(foo, 1500, 'steve');</code>
+
+        <p><strong>Why it works:</strong> setTimeoutX creates a closure around the variable, a, which
+            can then be referenced passed into the fnRef function when it is called.</p>
+
+        <button>Try it</button>
+    </div>
+</li>
+
+<li>
+    <p><strong>BONUS!</strong> Write a function, setTimeoutX, which takes N arguments, the first two of which are
+        fnRef and ms, followed by any number of additional arguments which should be passed into the fnRef function when
+        it executes after a delay of ms milliseconds.</p>
+
+    <ol></ol>
+    <button>Answer</button>
+
+    <div class="answer hidden">
+        <code class="runnable">function setTimeoutX(fnRef, ms)
+            {
+            var args = arguments;
+            setTimeout(function()
+            {
+            fnRef.apply(window, Array.prototype.slice.call(args, 2));
+            }, ms);
+            }
+
+            // test it out
+            function add(a, b, c, d)
+            {
+            alert(a + b + c + d);
+            }
+            setTimeoutX(add, 1500, 5, 10, 15, 20);</code>
+
+        <p><strong>Why it works:</strong> A closure is created in the same manner as the answers to Question 16, but
+            this time, we capture the arguments variable (a "special" variable available in every javascript function
+            which is an array-like object containing all passed in arguments).</p>
+
+        <p>We then leverage the .apply method (all javascript functions can be invoked with .apply) which allows
+            you to specify the "this" object (1st arg) and the arguments to pass into said function, given as an
+            array.</p>
+
+        <p>The args variable however, contains ALL arguments (even fnRef and ms, which we don't want to pass to fnRef).
+            So we use the native Array's slice method to pull out all but the first two arguments.</p>
+
+        <button>Try it</button>
+    </div>
+</li>
+</ol>
+
+<script>
+    Gimme('#questions ol+button').add_event('click', function (e) {
+        var a = Gimme(this).parent().select('.answer');
+        a.has_class('hidden') && a.remove_class('hidden') || a.add_class('hidden');
+    });
+
+    Gimme('#questions .answer > button').add_event('click', function (e) {
+        var code = Gimme(this).get_ancestor(2).select('code')[0].firstChild.nodeValue;
+        eval(code);
+    });
+</script>
+
+</body>
+</html>

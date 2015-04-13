@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>prototype</title>
+
+
+</head>
+<body>
+<script>
+
+    function test(a){}
+    test.prototype = new String();
+    test.prototype.constructor = String.prototype.constructor;
+    test.prototype.toString = String.prototype.toString;
+    alert(new String(1));
+    alert((new test("111")).indexOf(0));
+</script>
+</body>
+</html>
