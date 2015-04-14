@@ -1,0 +1,71 @@
+﻿    <link type="text/css" rel="stylesheet" href="pathmenu/css/pathmenu.jquery.css"/>
+    <style type="text/css">
+        #path_demo {
+            padding: 0 40px;
+            min-width: 1050px;
+        }
+
+        #menu_container {
+            top: 40%;
+            left: 40%;
+            position: absolute;
+        }
+    </style>
+
+
+        <h1 class="lab-title">Jquery plugin: 仿Path的弹出菜单</h1>
+
+        <div id="path_demo">
+            <div id="lab_code" class="lab-code">
+                <h2>Sample Code</h2>
+        <pre class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+$(document).ready(function () {
+    $('#menu-container').pathmenu({ base: '#base_button', direction: 'topright',width:150 });
+    $('#direction_list').bind('change',function(e){
+        var direction = e.target.value;
+        var width = 150;
+        if (direction == 'right'||direction=='left') width = 400;
+        $('#menu-container').pathmenu({ base: '#base_button', direction:  direction,width:width });
+    })
+});
+        </pre>
+                <h2>Source Code</h2>
+
+                <div class="lab-actions">
+                    <a class="btn btn-primary" href="https://www.github.com/dangjian/pathmenu" target="_blank"
+                       title="pathmenu">Download</a>
+                </div>
+            </div>
+            <div id="lab_demo" class="lab-demo">
+                <select id="direction_list">
+                    <option>left</option>
+                    <option>right</option>
+                    <option selected>topright</option>
+                    <option>topleft</option>
+                    <option>bottomright</option>
+                    <option>bottomleft</option>
+                </select>
+
+                <ul id="menu_container">
+                    <li id="button1"><a href="javascript:void(0)">1</a></li>
+                    <li id="button2"><a href="javascript:void(0)">2</a></li>
+                    <li id="button3"><a href="javascript:void(0)">3</a></li>
+                    <li id="button4"><a href="javascript:void(0)">4</a></li>
+                    <li id="button5"><a href="javascript:void(0)">5</a></li>
+                    <li id="base_button"><a href="#">+</a></li>
+                </ul>
+            </div>
+        </div>
+
+<script type="text/javascript" src="pathmenu/js/pathmenu.jquery.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#menu-container').pathmenu({ base: '#base_button', direction: 'topright', width: 150 });
+        $('#direction_list').bind('change', function (e) {
+            var direction = e.target.value;
+            var width = 150;
+            if (direction == 'right' || direction == 'left') width = 400;
+            $('#menu-container').pathmenu({ base: '#base_button', direction: direction, width: width });
+        })
+    });
+</script>
