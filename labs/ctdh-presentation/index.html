@@ -83,12 +83,27 @@
             color: rgb(255,255,255);
         }
     </style>
+    <script>
+        function fullscreen() {
+            var elem = document.body;//getElementById("impress");
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.msRequestFullscreen) {
+                elem.msRequestFullscreen();
+            } else if (elem.mozRequestFullScreen) {
+                elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullscreen) {
+                elem.webkitRequestFullscreen();
+            }
+        }
+    </script>
 </head>
 <body class="impress-not-supported">
 <div class="fallback-message">
     <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
     <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
 </div>
+<button class="action-fullscreen" onclick="fullscreen()">full screen</button>
 <div id="impress">
 
     <div id="title" class="step" data-x="-500" data-y="50">

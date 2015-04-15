@@ -40,6 +40,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
     line-height: 1;
+    width: 100%;
 }
 ol, ul {
     list-style: none;
@@ -72,6 +73,38 @@ body {
 
     -webkit-font-smoothing: antialiased;
 }
+body:fullscreen {
+    background-color: black;
+    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(115,199,63)), to(#53992D));
+    background: -webkit-radial-gradient(rgb(115,199,63), #53992D);
+    background:    -moz-radial-gradient(rgb(115,199,63), #53992D);
+    background:      -o-radial-gradient(rgb(115,199,63), #53992D);
+    background:         radial-gradient(rgb(115,199,63), #53992D);
+}
+body:fullscreen .action-fullscreen {
+    display: none;
+}
+body:-webkit-full-screen .action-fullscreen {
+    display: none;
+}
+body:-moz-full-screen .action-fullscreen {
+    display: none;
+}
+body:-webkit-full-screen {
+    background-color: black;
+    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(115,199,63)), to(#53992D));
+    background: -webkit-radial-gradient(rgb(115,199,63), #53992D);
+    background:    -moz-radial-gradient(rgb(115,199,63), #53992D);
+    background:      -o-radial-gradient(rgb(115,199,63), #53992D);
+    background:         radial-gradient(rgb(115,199,63), #53992D);}
+body:-moz-full-screen {
+    background-color: black;
+    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(115,199,63)), to(#53992D));
+    background: -webkit-radial-gradient(rgb(115,199,63), #53992D);
+    background:    -moz-radial-gradient(rgb(115,199,63), #53992D);
+    background:      -o-radial-gradient(rgb(115,199,63), #53992D);
+    background:         radial-gradient(rgb(115,199,63), #53992D);
+}
 
 b, strong { font-weight: bold }
 i, em { font-style: italic}
@@ -87,7 +120,6 @@ a:hover {
 }
 
 /* enable clicking on elements 'hiding' behind body in 3D */
-body     { pointer-events: none; }
 #impress { pointer-events: auto; }
 
 /* COMMON STEP STYLES */
