@@ -22,6 +22,7 @@ JavaScript, CSS, HTML, HTML5, Node.js, Express.js, Bootstrap, AngularJS, ASP.net
 * [MyStudyBible.com](https://www.mystudybible.com/)
 * [MyStudyBible.com mobile](https://www.mystudybible.com/mobile)
 * [SBG Bio-Registration System](http://www.sbg-fwcms.com/)
+* [LifeWay Reader](https://reader.lifeway.com/)
 * [eRealm home page](http://www.erealm.cn)
 * [绿城花卉](http://shop.sxlvcheng.com)
 
