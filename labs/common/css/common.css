@@ -104,7 +104,7 @@ img {
     display: inline-block;
     float: left;
 
-    width: 500px;
+    width: 50%;
     min-height: 400px;
     padding: 10px;
 
@@ -120,7 +120,7 @@ img {
     display: inline-block;
     float: right;
 
-    width: 400px;
+    width: 50%;
     min-height: 400px;
     padding: 10px 50px;
 

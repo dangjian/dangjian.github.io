@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>例子3：使用props</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link href="../common/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../common/css/common.css" rel="stylesheet"/>
+    <link href="../common/Highlighter/shCore.css" rel="stylesheet"/>
+    <link href="../common/Highlighter/ShDefault.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <h1 class="lab-title">例子3：使用props</h1>
+    <ol class="breadcrumb">
+        <li><a href="/labs/react">Home</a></li>
+        <li class="active">使用props</li>
+    </ol>
+    <div id="lab_code" class="lab-code">
+        <h2>示例代码</h2>
+        <pre style="font-size: 16px;"
+         class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+<script type="text/jsx">
+    var NotesList = React.createClass({
+        render: function() {
+            return (
+                    <div>
+                        <h3>{this.props.title}</h3>
+                        <ol>
+                    {
+                            this.props.children.map(function (child) {
+                                return <li>{child}</li>
+                            })
+                            }
+                        </ol>
+                    </div>
+            );
+        }
+    });
+
+    React.render(
+            <NotesList title="hello world">
+                <span>hello</span>
+                <span>world</span>
+            </NotesList>,
+            document.getElementById('sampleContainer')
+    );
+</script>
+    </pre>
+    </div>
+    <div class="lab-demo">
+        <h2>展示效果</h2>
+        <div id="sampleContainer"></div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../common/js/shCore.js"></script>
+<script type="text/javascript" src="../common/js/shLanguage.js"></script>
+<script type="text/javascript" src="../common/js/shLegacy.js"></script>
+<script src="../common/js/react/react.js"></script>
+<script src="../common/js/react/JSXTransformer.js"></script>
+<script type="text/jsx">
+    var NotesList = React.createClass({
+        render: function() {
+            return (
+                <div>
+                    <h3>{this.props.title}</h3>
+                    <ol>
+                    {
+                        this.props.children.map(function (child) {
+                            return <li>{child}</li>
+                        })
+                    }
+                    </ol>
+                </div>
+            );
+        }
+    });
+
+    React.render(
+        <NotesList title="hello world">
+            <span>hello</span>
+            <span>world</span>
+        </NotesList>,
+        document.getElementById('sampleContainer')
+    );
+</script>
+<script>
+    SyntaxHighlighter.highlight();
+</script>
+</body>
+</html>
