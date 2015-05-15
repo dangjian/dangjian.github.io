@@ -4,7 +4,7 @@
  * Created by ken on 5/12/15
  */
 
-var AppDispatcher = new Dispatcher();
+var AppDispatcher = new Flux.Dispatcher();
 
 AppDispatcher.handleAction = function(action) {
     this.dispatch({
@@ -12,5 +12,3 @@ AppDispatcher.handleAction = function(action) {
         action: action
     });
 };
-
-module.exports = AppDispatcher;
