@@ -35,11 +35,11 @@ JavaScript, CSS, HTML, HTML5, Node.js, Express.js, Bootstrap, AngularJS, React, 
 
 ### 参与的活动
 
-* 2010.11.26 ： [技术分享：HTML5](http://www.slideshare.net/hunterdang/html5-48176079)
-* 2013.06.09 ： [技术分享：从Velocity China 2013 Web 性能与运维大会能学到什么？](http://www.dang-jian.com/velocity/2013/06/09/velocity-china-2013.html)
-* 2013.10.08 ： [技术培训：JavaScript基础教程](http://www.dang-jian.com/labs/#/javascriptclass)
-* 2014.10.14 ： [技术分享：Modern Web Development](http://www.slideshare.net/hunterdang/first-class-39175981)
-* 2015.03.19 ： [校园宣讲：车同道合的技术氛围](www.dang-jian.com/labs/ctdh-presentation)
+* 2010.11.26 - [技术分享：HTML5](http://www.slideshare.net/hunterdang/html5-48176079)
+* 2013.06.09 - [技术分享：从Velocity China 2013 Web 性能与运维大会能学到什么？](http://www.dang-jian.com/velocity/2013/06/09/velocity-china-2013.html)
+* 2013.10.08 - [技术培训：JavaScript基础教程](http://www.dang-jian.com/labs/#/javascriptclass)
+* 2014.10.14 - [技术分享：Modern Web Development](http://www.slideshare.net/hunterdang/first-class-39175981)
+* 2015.03.19 - [校园宣讲：车同道合的技术氛围](www.dang-jian.com/labs/ctdh-presentation)
 
 ### 联系方式
 
