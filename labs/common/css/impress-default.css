@@ -167,7 +167,11 @@ a:hover {
 
 /* fade out inactive slides */
 .step:not(.active) {
-    opacity: 0.1;
+    opacity: 0.05;
+}
+
+.step img {
+    max-width: 99%;
 }
 
 /* IMPRESS NOT SUPPORTED STYLES */

@@ -9,6 +9,16 @@
     <link href="../common/css/font-awesome.min.css" rel="stylesheet" />
     <link href="../common/css/impress-default.css" rel="stylesheet" />
     <style>
+        .step {
+            background-image: url(logo.svg);
+            background-position: bottom right;
+            background-repeat: no-repeat;
+            background-size: 30px 30px;
+            color: #333;
+        }
+        .step h1 {
+            color: #000;
+        }
         #title,#summary {
             background-image: none;
         }
@@ -53,7 +63,7 @@
         </ul>
     </div>
 
-    <div id="whoiam" class="step" data-x="1500" data-y="3000" data-rotate="100" data-scale="5">
+    <div id="whoiam" class="step" data-x="1500" data-y="3000" data-rotate="100" data-scale="3">
         <h1>关于我：党建</h1>
         <a href="http://www.dang-jian.com">www.dang-jian.com</a>
         <br>
@@ -77,17 +87,50 @@
         <h1>签名送书</h1>
         <img src="http://images.china-pub.com/ebook3770001-3775000/3770903/shupi.jpg" style="min-width: 500px">
     </div>
-    <div id="aboutReact" class="step" data-x="2500" data-y="5000" data-rotate="180">
+    <div id="whatisReact" class="step" data-x="500" data-y="5000" data-rotate="180">
+        <h1>React是什么？</h1>
+        <img src="http://i.imgur.com/WF6BmaX.png">
+        <ul>
+            <li><i class="fa fa-dot-circle-o"> </i> Facebook开发的一个用于构建UI的JS库，不是框架</li>
+            <li><i class="fa fa-dot-circle-o"> </i> React不是一个MVC框架，可以看作为MVC里面的“V”</li>
+        </ul>
+    </div>
+    <div id="sampleCode" class="step" data-x="-1500" data-y="4500" data-rotate="90">
+        <img src="sampleCode.PNG">
+    </div>
+    <div id="aboutReact" class="step" data-x="2500" data-y="5000" data-rotate="180" data-scale="2">
         <h1>React的发展历史</h1>
         <ul>
-            <li><i class="fa fa-check"></i> 出身名门：facebook</li>
+            <li><i class="fa fa-check"></i> 来自于facebook内部的一个广告系统</li>
+            <li><i class="fa fa-check"></i> Instagram使用了React构建其前端架构</li>
+            <li><i class="fa fa-check"></i> 2013年5月对外发布</li>
+            <li><i class="fa fa-check"></i> 2015年3月发布React Native</li>
+            <li><i class="fa fa-check"></i> 目前（2015年5月）的版本正式版本0.13.3</li>
         </ul>
     </div>
     <div id="design" class="step" data-x="3500" data-y="50" data-rotate="60">
-        <h1>React的设计理念</h1>
+        <h1>React的设计</h1>
+        <ul>
+            <li><i class="fa fa-check"></i> 编写简单直观的代码</li>
+            <li><i class="fa fa-check"></i> 简化可复用的组件</li>
+            <li><i class="fa fa-check"></i> 使用JSX直观的定义用户界面</li>
+            <li><i class="fa fa-check"></i> 虚拟DOM</li>
+            <li><i class="fa fa-check"></i> 单向数据流动：Flux</li>
+        </ul>
     </div>
-    <div id="features" class="step" data-x="4500" data-y="100" data-rotate="90">
-        <h1>React的主要特色</h1>
+    <div id="JSX" class="step" data-x="4500" data-y="100" data-rotate="90">
+        <h1>JSX</h1>
+        <a href="https://facebook.github.io/jsx/">https://facebook.github.io/jsx</a>
+        <ul>
+            <li><i class="fa fa-list-alt"></i> 是React的重要组成部分，但非必须</li>
+            <li><i class="fa fa-list-alt"></i> 使用类似于XML标记的方式来描述界面</li>
+            <li><i class="fa fa-list-alt"></i> 使用JSX直观的定义用户界面</li>
+        </ul>
+    </div>
+    <div id="JSXCompile" class="step" data-x="4500" data-y="100" data-z="1000" data-rotate="90">
+        <h1>JSX编译</h1>
+        <a href="https://facebook.github.io/react/jsx-compiler.html">https://facebook.github.io/react/jsx-compiler.html</a>
+        <img src="JSXCompile.PNG">
     </div>
     <div id="issues" class="step" data-x="5500" data-y="100" data-rotate="-90">
         <h1>React目前存在的问题</h1>
