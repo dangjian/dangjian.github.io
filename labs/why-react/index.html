@@ -8,6 +8,8 @@
     <title>React为什么这么火</title>
     <link href="../common/css/font-awesome.min.css" rel="stylesheet" />
     <link href="../common/css/impress-default.css" rel="stylesheet" />
+    <link href="../common/Highlighter/shCore.css" rel="stylesheet"/>
+    <link href="../common/Highlighter/ShDefault.css" rel="stylesheet"/>
     <style>
         .step {
             background-image: url(logo.svg);
@@ -47,7 +49,7 @@
 <div id="impress">
 
     <div id="title" class="step" data-x="-500" data-y="50">
-        <img src="logo.svg" alt-="车同道合" style="max-width: 100px" />
+        <img src="logo.svg" alt="react" style="max-width: 100px" />
         <h1>React为什么这么火</h1>
         <h2>http://www.dang-jian.com/</h2>
         <h3>党建</h3>
@@ -84,7 +86,7 @@
         </div>
     </div>
     <div id="mybook" class="step" data-x="2500" data-y="-500" data-rotate="-60">
-        <h1>签名送书</h1>
+        <h1>送书</h1>
         <img src="http://images.china-pub.com/ebook3770001-3775000/3770903/shupi.jpg" style="min-width: 500px">
     </div>
     <div id="whatisReact" class="step" data-x="500" data-y="5000" data-rotate="180">
@@ -124,7 +126,7 @@
         <ul>
             <li><i class="fa fa-list-alt"></i> 是React的重要组成部分，但非必须</li>
             <li><i class="fa fa-list-alt"></i> 使用类似于XML标记的方式来描述界面</li>
-            <li><i class="fa fa-list-alt"></i> 使用JSX直观的定义用户界面</li>
+            <li><i class="fa fa-list-alt"></i> 使用JSX直观的定义用户界面，降低了使用难度</li>
         </ul>
     </div>
     <div id="JSXCompile" class="step" data-x="4500" data-y="100" data-z="1000" data-rotate="90">
@@ -132,16 +134,93 @@
         <a href="https://facebook.github.io/react/jsx-compiler.html">https://facebook.github.io/react/jsx-compiler.html</a>
         <img src="JSXCompile.PNG">
     </div>
-    <div id="issues" class="step" data-x="5500" data-y="100" data-rotate="-90">
-        <h1>React目前存在的问题</h1>
+    <div id="virtualDOM" class="step" data-x="5500" data-y="100" data-rotate="-90">
+        <h1>虚拟DOM</h1>
+        <ul>
+            <li><i class="fa fa-check"></i> 原生DOM操作，性能是个关注点</li>
+            <li><i class="fa fa-check"></i> 虚拟DOM是React重新实现的一套DOM模型</li>
+            <li><i class="fa fa-check"></i> 保留了元素的层级关系和少量的属性</li>
+            <li><i class="fa fa-check"></i> 性能比原生DOM操作高很多</li>
+        </ul>
     </div>
-    <div id="summary" class="step" data-x="6500" data-y="-1000" data-rotate="120">
+    <div id="virtualDOMCode" class="step" data-x="6500" data-y="-2000" data-rotate="120">
+        <h1>虚拟DOM和原生DOM使用对比</h1>
+        <h2>使用原生DOM生成元素</h2>
+        <pre style="font-size: 16px;"
+                     class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+	var a = document.createElement('a')
+	a.setAttribute('class', 'link')
+	a.setAttribute('href', 'https://github.com/facebook/react')
+	a.appendChild(document.createTextNode('React'))
+        </pre>
+        <h2>使用虚拟DOM生成元素</h2>
+                <pre style="font-size: 16px;"
+                     class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+	var a = React.createElement('a', {
+	    className: 'link',
+	    href: 'https://github.com/facebook/react'
+	}, 'React')
+        </pre>
+    </div>
+    <div id="reactDOM" class="step" data-x="7500" data-y="-1000" data-rotate="-90" data-z="500" data-scale="2">
+        <h1>虚拟DOM在React中的应用</h1>
+        <ul>
+            <li><i class="fa fa-check"></i> 不同的数据展现不同的UI,当数据变化时，React会重新构建整个DOM树</li>
+            <li><i class="fa fa-check"></i> 将当前的DOM树和之前的比较，仅仅把变化的部分反映到实际的浏览器UI更新上</li>
+            <li><i class="fa fa-check"></i> 可以在服务器端完成HTML结构的构建</li>
+        </ul>
+    </div>
+    <div id="flux" class="step" data-x="8500" data-y="1000" data-rotate="120">
+        <h1>单向数据流动：Flux</h1>
+        <a href="https://facebook.github.io/flux/">https://facebook.github.io/flux</a>
+        <ul>
+            <li><i class="fa fa-check"></i> 独立于React的架构</li>
+            <li><i class="fa fa-check"></i> 配合React框架来处理组件和数据之间的交互</li>
+            <li><i class="fa fa-check"></i> 使用了单向数据绑定的机制，即数据模型到视图的流动</li>
+        </ul>
+    </div>
+    <div id="fluxMVC1" class="step" data-x="9500" data-y="-1000" data-rotate="90" data-scale="2">
+        <h1>Flux与MVC</h1>
+        <img src="http://i.imgur.com/5QPaulu.png" alt="MVC" style="min-width: 99%">
+    </div>
+    <div id="fluxMVC2" class="step" data-x="9500" data-y="-1000" data-rotate="90" data-scale="2">
+        <h1>Flux与MVC</h1>
+        <img src="http://i.imgur.com/RXws70p.png" alt="Flux" style="min-width: 99%">
+    </div>
+    <div id="fluxDesign" class="step" data-x="11000" data-y="2000" data-rotate="160">
+        <h1>Flux: Actions、Dispatcher和Stores</h1>
+        <ul>
+            <li><i class="fa fa-check"></i> Actions是用于传递数据给Dispatcher的操作集合</li>
+            <li><i class="fa fa-check"></i> Dispatcher是一个全局的分发器，接受Action，并传递给注册的回调函数</li>
+            <li><i class="fa fa-check"></i> Stores包含了应用的状态及注册到Dispatcher的回调函数</li>
+        </ul>
+    </div>
+    <div id="reactDemo" class="step" data-x="11000" data-y="2000" data-rotate="160">
+        <img src="logo.svg" alt="react" style="max-width: 200px" />
+        <h1><a href="/labs/react">Show Demo</a></h1>
+    </div>
+    <div id="ReactStudy" class="step" data-x="11000" data-y="-1000" data-rotate="120">
+        <h1>React相关的学习资料</h1>
+        <ul>
+            <li><i class="fa fa-dot-circle-o"></i> <a href="http://www.ruanyifeng.com/blog/2015/03/react.html">阮一峰: React 入门实例教程</a></li>
+            <li><i class="fa fa-dot-circle-o"></i> <a href="http://facebook.github.io/react">React官方网站</a></li>
+            <li><i class="fa fa-dot-circle-o"></i> <a href="https://github.com/enaqx/awesome-react">国外React资源合集</a></li>
+            <li><i class="fa fa-dot-circle-o"></i> <a href="http://react-china.org/">React中文网站</a></li>
+        </ul>
+    </div>
+    <div id="summary" class="step" data-x="12000" data-y="-3000" data-rotate="-30" data-scale="2">
         <img src="logo.svg" alt="React" style="max-width: 200px" />
         <h1>Thank you!</h1>
-        <h2>Any question?</h2>
+        <h3>Any question?</h3>
     </div>
 </div>
 <script src="../common/js/impress.js"></script>
 <script>impress().init();</script>
+<script type="text/javascript" src="../common/js/shCore.js"></script>
+<script type="text/javascript" src="../common/js/shLanguage.js"></script>
+<script type="text/javascript" src="../common/js/shLegacy.js"></script>
+<script>
+    SyntaxHighlighter.highlight();
+</script>
 </body>
 </html>
