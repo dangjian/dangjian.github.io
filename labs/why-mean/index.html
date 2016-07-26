@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="author" content="Dang Jian" />
+    <title>Web全栈开发工程师的利器-MEAN.JS</title>
+    <link href="../common/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../common/css/impress-default.css" rel="stylesheet" />
+    <link href="../common/Highlighter/shCore.css" rel="stylesheet"/>
+    <link href="../common/Highlighter/ShDefault.css" rel="stylesheet"/>
+    <style>
+        .step {
+            background-image: url(logo.png);
+            background-position: bottom right;
+            background-repeat: no-repeat;
+            background-size: 30px 30px;
+            color: #333;
+        }
+        .step h1 {
+            color: #000;
+        }
+        #title,#summary {
+            background-image: none;
+        }
+    </style>
+    <script>
+        function fullscreen() {
+            var elem = document.body;//getElementById("impress");
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.msRequestFullscreen) {
+                elem.msRequestFullscreen();
+            } else if (elem.mozRequestFullScreen) {
+                elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullscreen) {
+                elem.webkitRequestFullscreen();
+            }
+        }
+    </script>
+</head>
+<body class="impress-not-supported">
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+<button class="action-fullscreen" onclick="fullscreen()">full screen</button>
+<div id="impress">
+
+    <div id="title" class="step" data-x="-500" data-y="50">
+        <img src="logo.png" alt="react" style="max-height: 100px" />
+        <h1>Web全栈开发工程师的利器-MEAN.JS</h1>
+        <h3><a href="http://www.dang-jian.com">http://www.dang-jian.com</a></h3>
+        <h3>党建</h3>
+    </div>
+
+    <div id="agenda" class="step" data-x="500" data-y="50">
+        <h1>议程:</h1>
+        <ul>
+            <li>MEAN.JS的发展历史</li>
+            <li>MEAN.JS的主要特色</li>
+            <li>MEAN.JS相关学习资料</li>
+        </ul>
+    </div>
+
+    <div id="whoiam" class="step" data-x="1500" data-y="3000" data-rotate="100" data-scale="3">
+        <h1>关于我：党建</h1>
+        <a href="http://www.dang-jian.com">www.dang-jian.com</a>
+        <br>
+        <div style="float: left">
+            <img src="http://i.imgur.com/mnwusO1.jpg?1" alt="dangjian" style="max-width: 300px;">
+        </div>
+        <div style="float: right;margin-left: 20px;">
+            <ul  style="width: 500px">
+                <li>2000年~2007年：西安电子科技大学，硕士学历，人工智能。</li>
+                <li>2007年~2014年：葡萄城信息技术有限公司，程序员，架构师。</li>
+                <li>2014年~今：西安瑞木信息技术有限公司，架构师，合伙人，负责公司技术培训，团队建设。</li>
+            </ul>
+            <ul style="width: 400px;color: rgba(255,255,255,0.8)">
+                <li><i class="fa fa-github"></i> dangjian@github</li>
+                <li><i class="fa fa-weibo"></i> dangjian@weibo</li>
+                <li><i class="fa fa-envelope"></i> hunterdang@gmail.com</li>
+            </ul>
+        </div>
+    </div>
+    <div id="mybook" class="step" data-x="2500" data-y="-500" data-rotate="-60">
+        <h1>送书</h1>
+        <img src="http://images.china-pub.com/ebook3770001-3775000/3770903/shupi.jpg" style="min-width: 500px">
+    </div>
+    <div id="aboutReact" class="step" data-x="500" data-y="5000" data-rotate="180">
+        <h1>React的发展历史</h1>
+        <ul>
+            <li><i class="fa fa-check"></i> 来自于facebook内部的一个广告系统</li>
+            <li><i class="fa fa-check"></i> Instagram使用了React构建其前端架构</li>
+            <li><i class="fa fa-check"></i> 2013年5月对外发布</li>
+            <li><i class="fa fa-check"></i> 2015年3月发布React Native</li>
+            <li><i class="fa fa-check"></i> 目前（2015年5月）的版本正式版本0.13.3</li>
+        </ul>
+    </div>
+    <div id="whatisReact" class="step" data-x="-1500" data-y="4500" data-rotate="90">
+        <h1>React是什么？</h1>
+        <img src="http://i.imgur.com/WF6BmaX.png">
+        <ul>
+            <li><i class="fa fa-dot-circle-o"> </i> Facebook开发的一个用于构建UI的JS库，不是框架</li>
+            <li><i class="fa fa-dot-circle-o"> </i> React不是一个MVC框架，可以看作为MVC里面的“V”</li>
+        </ul>
+    </div>
+    <div id="sampleCode" class="step" data-x="2500" data-y="5000" data-rotate="180" data-scale="2">
+        <img src="sampleCode.PNG">
+    </div>
+    <div id="design" class="step" data-x="3500" data-y="50" data-rotate="60">
+        <h1>React的设计</h1>
+        <ul>
+            <li><i class="fa fa-check"></i> 编写简单直观的代码</li>
+            <li><i class="fa fa-check"></i> 简化可复用的组件</li>
+            <li><i class="fa fa-check"></i> 使用JSX直观的定义用户界面</li>
+            <li><i class="fa fa-check"></i> 虚拟DOM</li>
+            <li><i class="fa fa-check"></i> 单向数据流动：Flux</li>
+        </ul>
+    </div>
+    <div id="JSX" class="step" data-x="4500" data-y="100" data-rotate="90">
+        <h1>JSX</h1>
+        <a href="https://facebook.github.io/jsx/">https://facebook.github.io/jsx</a>
+        <ul>
+            <li><i class="fa fa-list-alt"></i> 是React的重要组成部分，但非必须</li>
+            <li><i class="fa fa-list-alt"></i> 使用类似于XML标记的方式来描述界面</li>
+            <li><i class="fa fa-list-alt"></i> 使用JSX直观的定义用户界面，降低了使用难度</li>
+        </ul>
+    </div>
+    <div id="JSXCompile" class="step" data-x="4500" data-y="100" data-z="1000" data-rotate="90">
+        <h1>JSX编译</h1>
+        <a href="https://facebook.github.io/react/jsx-compiler.html">https://facebook.github.io/react/jsx-compiler.html</a>
+        <img src="JSXCompile.PNG">
+    </div>
+    <div id="virtualDOM" class="step" data-x="5500" data-y="100" data-rotate="-90">
+        <h1>虚拟DOM</h1>
+        <ul>
+            <li><i class="fa fa-check"></i> 虚拟DOM是React重新实现的一套DOM模型</li>
+            <li><i class="fa fa-check"></i> 保留了元素的层级关系和少量的属性</li>
+            <li><i class="fa fa-check"></i> 性能比原生DOM操作好很多</li>
+        </ul>
+    </div>
+    <div id="virtualDOMCode" class="step" data-x="6500" data-y="-2000" data-rotate="120">
+        <h1>虚拟DOM和原生DOM</h1>
+        <h2>使用原生DOM生成元素</h2>
+        <pre style="font-size: 16px;"
+                     class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+	var a = document.createElement('a')
+	a.setAttribute('class', 'link')
+	a.setAttribute('href', 'https://github.com/facebook/react')
+	a.appendChild(document.createTextNode('React'))
+        </pre>
+        <h2>使用虚拟DOM生成元素</h2>
+                <pre style="font-size: 16px;"
+                     class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+	var a = React.createElement('a', {
+	    className: 'link',
+	    href: 'https://github.com/facebook/react'
+	}, 'React')
+        </pre>
+    </div>
+    <div id="reactDOM" class="step" data-x="7500" data-y="-1000" data-rotate="-90" data-z="500" data-scale="2">
+        <h1>虚拟DOM在React中的应用</h1>
+        <ul>
+            <li><i class="fa fa-check"></i> 不同的数据展现不同的UI,当数据变化时，React会重新构建整个DOM树</li>
+            <li><i class="fa fa-check"></i> 将当前的DOM树和之前的比较，仅仅把变化的部分反映到实际的浏览器UI更新上</li>
+            <li><i class="fa fa-check"></i> 可以在服务器端完成HTML结构的构建</li>
+        </ul>
+    </div>
+    <div id="flux" class="step" data-x="8500" data-y="1000" data-rotate="120">
+        <h1>单向数据流动：Flux</h1>
+        <a href="https://facebook.github.io/flux/">https://facebook.github.io/flux</a>
+        <ul>
+            <li><i class="fa fa-check"></i> 独立于React的架构</li>
+            <li><i class="fa fa-check"></i> 配合React框架来处理组件和数据之间的交互</li>
+            <li><i class="fa fa-check"></i> 使用了单向数据绑定的机制，即数据模型到视图的流动</li>
+        </ul>
+    </div>
+    <div id="fluxMVC1" class="step" data-x="9500" data-y="-1000" data-rotate="90" data-scale="2">
+        <h1>Flux与MVC</h1>
+        <img src="http://i.imgur.com/5QPaulu.png" alt="MVC" style="min-width: 99%">
+    </div>
+    <div id="fluxMVC2" class="step" data-x="9500" data-y="-1000" data-rotate="90" data-scale="2">
+        <h1>Flux与MVC</h1>
+        <img src="http://i.imgur.com/RXws70p.png" alt="Flux" style="min-width: 99%">
+    </div>
+    <div id="fluxDesign" class="step" data-x="11000" data-y="2000" data-rotate="160">
+        <h1>Flux: Actions、Dispatcher和Stores</h1>
+        <ul>
+            <li><i class="fa fa-check"></i> Actions是用于传递数据给Dispatcher的操作集合</li>
+            <li><i class="fa fa-check"></i> Dispatcher是一个全局的分发器，接受Action，并传递给注册的回调函数</li>
+            <li><i class="fa fa-check"></i> Stores包含了应用的状态及注册到Dispatcher的回调函数</li>
+        </ul>
+    </div>
+    <div id="reactDemo" class="step" data-x="11000" data-y="2000" data-rotate="160">
+        <img src="logo.png" alt="react" style="max-height: 100px" />
+        <h1><a href="/labs/react">Show Demo</a></h1>
+    </div>
+    <div id="ReactStudy" class="step" data-x="11000" data-y="-1000" data-rotate="120">
+        <h1>React相关的学习资料</h1>
+        <ul>
+            <li><i class="fa fa-dot-circle-o"></i> <a href="http://www.ruanyifeng.com/blog/2015/03/react.html">阮一峰: React 入门实例教程</a></li>
+            <li><i class="fa fa-dot-circle-o"></i> <a href="http://facebook.github.io/react">React官方网站</a></li>
+            <li><i class="fa fa-dot-circle-o"></i> <a href="https://github.com/enaqx/awesome-react">国外React资源合集</a></li>
+            <li><i class="fa fa-dot-circle-o"></i> <a href="http://react-china.org/">React中文网站</a></li>
+        </ul>
+    </div>
+    <div id="summary" class="step" data-x="12000" data-y="-3000" data-rotate="-30" data-scale="2">
+        <img src="logo.png" alt="React" style="max-height: 100px" />
+        <h1>Thank you!</h1>
+        <h3>Any question?</h3>
+    </div>
+</div>
+<script src="../common/js/impress.js"></script>
+<script>impress().init();</script>
+<script type="text/javascript" src="../common/js/shCore.js"></script>
+<script type="text/javascript" src="../common/js/shLanguage.js"></script>
+<script type="text/javascript" src="../common/js/shLegacy.js"></script>
+<script>
+    SyntaxHighlighter.highlight();
+</script>
+</body>
+</html>
