@@ -125,8 +125,8 @@ a:hover {
 /* COMMON STEP STYLES */
 
 .step {
-    width: 1000px;
-    padding: 40px;
+    width: 1100px;
+    padding: 40px 20px;
 
     -webkit-box-sizing: border-box;
     -moz-box-sizing:    border-box;
@@ -163,10 +163,10 @@ a:hover {
     text-align: left;
 }
 .step ul {
-    width: 600px;
+    width: 700px;
     text-align: left;
     margin: 0 auto;
-    font-size: 35px;
+    font-size: 32px;
 }
 .step li {
     line-height: 2.5em;
@@ -270,4 +270,8 @@ a:hover {
 }
 
 .topFace {
+}
+
+.about ul li {
+    line-height: 1.2em;
 }
