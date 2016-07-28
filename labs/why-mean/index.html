@@ -15,7 +15,7 @@
             background-image: url(logo.png);
             background-position: bottom right;
             background-repeat: no-repeat;
-            background-size: 30px 30px;
+            background-size: auto 30px;
             color: #333;
         }
         .step h1 {
@@ -24,10 +24,13 @@
         #title,#summary {
             background-image: none;
         }
+        .mean-stacks img {
+            max-height: 150px;
+        }
     </style>
     <script>
         function fullscreen() {
-            var elem = document.body;//getElementById("impress");
+            var elem = document.documentElement;//getElementById("impress");
             if (elem.requestFullscreen) {
                 elem.requestFullscreen();
             } else if (elem.msRequestFullscreen) {
@@ -58,8 +61,9 @@
     <div id="agenda" class="step" data-x="500" data-y="50">
         <h1>议程:</h1>
         <ul>
-            <li>MEAN.JS的发展历史</li>
+            <li>什么是MEAN</li>
             <li>MEAN.JS的主要特色</li>
+            <li>我们在项目中如何实践MEAN.JS</li>
             <li>MEAN.JS相关学习资料</li>
         </ul>
     </div>
@@ -86,59 +90,54 @@
     </div>
     <div id="mybook" class="step" data-x="2500" data-y="-500" data-rotate="-60">
         <h1>送书</h1>
-        <img src="http://images.china-pub.com/ebook3770001-3775000/3770903/shupi.jpg" style="min-width: 500px">
+        <img src="http://images.china-pub.com/ebook3770001-3775000/3770903/shupi.jpg" style="max-height: 600px">
     </div>
-    <div id="aboutReact" class="step" data-x="500" data-y="5000" data-rotate="180">
-        <h1>React的发展历史</h1>
+    <div id="aboutMean" class="step" data-x="500" data-y="5000" data-rotate="180">
+        <h1>什么是MEAN技术栈</h1>
+    </div>
+    <div id="otherStack" class="step" data-x="-1500" data-y="4500" data-rotate="90">
+        <h1>其他已知的技术栈</h1>
+        <img alt="stack" src="stack.jpeg">
         <ul>
-            <li><i class="fa fa-check"></i> 来自于facebook内部的一个广告系统</li>
-            <li><i class="fa fa-check"></i> Instagram使用了React构建其前端架构</li>
-            <li><i class="fa fa-check"></i> 2013年5月对外发布</li>
-            <li><i class="fa fa-check"></i> 2015年3月发布React Native</li>
-            <li><i class="fa fa-check"></i> 目前（2015年5月）的版本正式版本0.13.3</li>
+            <li><i class="fa fa-dot-circle-o"> </i> <strong>LAMP:</strong> Linux, Apache, Php, MySQL</li>
+            <li><i class="fa fa-dot-circle-o"> </i> <strong>MS.Net:</strong> IIS, C#, ASP.Net, SQL Server</li>
+            <li><i class="fa fa-dot-circle-o"> </i> <strong>Java:</strong> Tomcat, Java, JSP, Oracle</li>
         </ul>
     </div>
-    <div id="whatisReact" class="step" data-x="-1500" data-y="4500" data-rotate="90">
-        <h1>React是什么？</h1>
-        <img src="http://i.imgur.com/WF6BmaX.png">
+    <div id="meanStack" class="step" data-x="2500" data-y="5000" data-rotate="180" data-scale="2">
+        <h1>MEAN技术栈</h1>
+        <div class="mean-stacks">
+            <img alt="mongodb" src="mongodb-logo.png">
+            <img alt="express" src="express-logo.png">
+            <img alt="AngularJS" src="AngularJS-logo.png">
+            <img alt="nodejs" src="nodejs-logo.png">
+        </div>
+    </div>
+    <div id="stackDetail" class="step" data-x="3500" data-y="50" data-rotate="60">
+        <h1>MEAN技术栈</h1>
         <ul>
-            <li><i class="fa fa-dot-circle-o"> </i> Facebook开发的一个用于构建UI的JS库，不是框架</li>
-            <li><i class="fa fa-dot-circle-o"> </i> React不是一个MVC框架，可以看作为MVC里面的“V”</li>
+            <li><i class="fa fa-dot-circle-o"> </i> <strong>MongoDB - </strong> 数据库</li>
+            <li><i class="fa fa-dot-circle-o"> </i> <strong>Express - </strong> Web应用框架</li>
+            <li><i class="fa fa-dot-circle-o"> </i> <strong>AngularJS - </strong> Web前端框架</li>
+            <li><i class="fa fa-dot-circle-o"> </i> <strong>Node.js - </strong> 服务端运行环境</li>
         </ul>
     </div>
-    <div id="sampleCode" class="step" data-x="2500" data-y="5000" data-rotate="180" data-scale="2">
-        <img src="sampleCode.PNG">
+    <div id="stackChart" class="step" data-x="4500" data-y="100" data-rotate="90">
+        <h1>MEAN技术栈</h1>
+        <img src="detail.png" alt="detail">
     </div>
-    <div id="design" class="step" data-x="3500" data-y="50" data-rotate="60">
-        <h1>React的设计</h1>
+    <div id="stackChartDetail" class="step" data-x="5500" data-y="100" data-z="1000" data-rotate="90">
+        <h1>MEAN技术栈</h1>
+        <h2>都是我们熟悉的技术，这很前端~</h2>
+        <img src="detail2.png" alt="detail">
+    </div>
+    <div id="whyMean" class="step" data-x="5500" data-y="100" data-rotate="-90">
+        <h1>我们为什么要使用MEAN</h1>
         <ul>
-            <li><i class="fa fa-check"></i> 编写简单直观的代码</li>
-            <li><i class="fa fa-check"></i> 简化可复用的组件</li>
-            <li><i class="fa fa-check"></i> 使用JSX直观的定义用户界面</li>
-            <li><i class="fa fa-check"></i> 虚拟DOM</li>
-            <li><i class="fa fa-check"></i> 单向数据流动：Flux</li>
-        </ul>
-    </div>
-    <div id="JSX" class="step" data-x="4500" data-y="100" data-rotate="90">
-        <h1>JSX</h1>
-        <a href="https://facebook.github.io/jsx/">https://facebook.github.io/jsx</a>
-        <ul>
-            <li><i class="fa fa-list-alt"></i> 是React的重要组成部分，但非必须</li>
-            <li><i class="fa fa-list-alt"></i> 使用类似于XML标记的方式来描述界面</li>
-            <li><i class="fa fa-list-alt"></i> 使用JSX直观的定义用户界面，降低了使用难度</li>
-        </ul>
-    </div>
-    <div id="JSXCompile" class="step" data-x="4500" data-y="100" data-z="1000" data-rotate="90">
-        <h1>JSX编译</h1>
-        <a href="https://facebook.github.io/react/jsx-compiler.html">https://facebook.github.io/react/jsx-compiler.html</a>
-        <img src="JSXCompile.PNG">
-    </div>
-    <div id="virtualDOM" class="step" data-x="5500" data-y="100" data-rotate="-90">
-        <h1>虚拟DOM</h1>
-        <ul>
-            <li><i class="fa fa-check"></i> 虚拟DOM是React重新实现的一套DOM模型</li>
-            <li><i class="fa fa-check"></i> 保留了元素的层级关系和少量的属性</li>
-            <li><i class="fa fa-check"></i> 性能比原生DOM操作好很多</li>
+            <li><i class="fa fa-check"></i> 一种语言编写前后端逻辑，相同的语法和规范</li>
+            <li><i class="fa fa-check"></i> 项目的扩展性好，便于团队协作</li>
+            <li><i class="fa fa-check"></i> 项目结构清晰，容易上手</li>
+            <li><i class="fa fa-check"></i> 社区活跃，可用资源多</li>
         </ul>
     </div>
     <div id="virtualDOMCode" class="step" data-x="6500" data-y="-2000" data-rotate="120">

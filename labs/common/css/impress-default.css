@@ -64,7 +64,7 @@ body {
     font-family: 'PT Sans', sans-serif;
 
     min-height: 740px;
-    background-color: black;
+    background: black;
     background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(115,199,63)), to(#53992D));
     background: -webkit-radial-gradient(rgb(115,199,63), #53992D);
     background:    -moz-radial-gradient(rgb(115,199,63), #53992D);
@@ -74,7 +74,7 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 body:fullscreen {
-    background-color: black;
+    background: black;
     background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(115,199,63)), to(#53992D));
     background: -webkit-radial-gradient(rgb(115,199,63), #53992D);
     background:    -moz-radial-gradient(rgb(115,199,63), #53992D);
@@ -91,14 +91,14 @@ body:-moz-full-screen .action-fullscreen {
     display: none;
 }
 body:-webkit-full-screen {
-    background-color: black;
+    background: black;
     background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(115,199,63)), to(#53992D));
     background: -webkit-radial-gradient(rgb(115,199,63), #53992D);
     background:    -moz-radial-gradient(rgb(115,199,63), #53992D);
     background:      -o-radial-gradient(rgb(115,199,63), #53992D);
     background:         radial-gradient(rgb(115,199,63), #53992D);}
 body:-moz-full-screen {
-    background-color: black;
+    background: black;
     background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(115,199,63)), to(#53992D));
     background: -webkit-radial-gradient(rgb(115,199,63), #53992D);
     background:    -moz-radial-gradient(rgb(115,199,63), #53992D);
@@ -154,6 +154,7 @@ a:hover {
     font-size: 60px;
     font-weight: 700;
     margin-bottom: 10px;
+    text-shadow: -4px 0 white, 0 4px white, 4px 0 white, 0 -4px white;
 }
 .step h2 {
     font-size: 45px;
@@ -165,10 +166,10 @@ a:hover {
     width: 600px;
     text-align: left;
     margin: 0 auto;
-    font-size: 30px;
+    font-size: 35px;
 }
 .step li {
-    line-height: 2em;
+    line-height: 2.5em;
 }
 
 /* fade out inactive slides */
