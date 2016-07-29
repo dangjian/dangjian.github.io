@@ -166,10 +166,10 @@ a:hover {
     width: 700px;
     text-align: left;
     margin: 0 auto;
-    font-size: 32px;
+    font-size: 30px;
 }
 .step li {
-    line-height: 2.5em;
+    line-height: 2em;
 }
 
 /* fade out inactive slides */
