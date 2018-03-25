@@ -1,0 +1,386 @@
+<h1 class="lab-title">第四节：事件处理、DOM、Ajax</h1>
+<ul class="item-actions">
+    <li><a href="#javascriptclass">Home</a></li>
+    <li><a href="javascript:$('.panel-collapse').collapse('toggle');">expand all</a></li>
+</ul>
+<h2 id="case1" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#content1">1. EVENT机制</h2>
+
+<div id="content1" class="panel-collapse collapse in">
+<pre style="font-size: 16px;"
+     class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+    // 1. 异步事件:异步回调 http://jsbin.com/Olanede/1/edit
+    window.onload = loaded;
+    function loaded() {
+        document.getElementById('body').style.border = '1px solid #F00';
+    }
+    </pre>
+    <pre style="font-size: 16px;"
+         class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+     // 2. 事件阶段，事件流 : http://jsbin.com/OqigigA/1/edit
+   </pre>
+<p class="tip">
+    事件模型分为两种：冒泡型事件、捕获型事件。
+    <br>
+    冒泡型（dubbed bubbling ）事件：指事件按照从最精确的对象到最不精确的对象的顺序逐一触发。
+    <br>
+    捕获型（event capturing ）事件：它与冒泡型事件相反，指事件按照从最不精确的对象到最精确的对象的顺序逐一触发。
+    <br>
+    <img src="images/event.png" alt="event flow">
+</p>
+    <pre style="font-size: 16px;"
+         class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+    // 3. 事件绑定：事件绑定主要使用三种
+    // 3.1 Dom绑定：只能绑定一次。只支持订阅冒泡阶段事件。
+    <a onclick="handle(event)" href="#">link</a>
+    // 3.2 IE(IE8-)绑定：同一元素支持多次绑定。事件处理函数内部this关键字引用了window对象。事件名前必须加on。
+    document.attachEvent("onload", function () {
+        alert("i am load");
+    });
+    // 3.3 W3C标准绑定：支持冒泡与捕获阶段。 在处理函数内部，this关键字引用当前元素。 可以为同一元素的同一时间绑定多个处理函数，不会覆盖。
+    document.getElementById("linkA").addEventListener('click', function (e) {
+        alert('i am clicked!');
+    }, false);
+    // 4. 事件解除
+    // 4.1 W3C标准解除：
+    removeEventListener(evtype,fn,useCapture);
+    // 4.2 IE解除
+    detachEvent("on"+evtype,fn);
+
+    // 跨浏览器兼容方案
+	function addEvent(obj,evtype,fn,useCapture) {
+		if (obj.addEventListener) {
+			obj.addEventListener(evtype,fn,useCapture);
+		} else {
+			obj.attachEvent("on"+evtype,fn);//IE不支持事件捕获
+		} else {
+			obj["on"+evtype]=fn;//事实上这种情况不会存在
+		}
+	}
+	function delEvent(obj,evtype,fn,useCapture) {
+		if (obj.removeEventListener) {
+			obj.removeEventListener(evtype,fn,useCapture);
+		} else {
+			obj.detachEvent("on"+evtype,fn);
+		} else {
+			obj["on"+evtype]=null;
+		}
+	}
+
+    // 使用attachEvent时在事件处理函数内部，this指向了window，而不是obj
+    function addEvent(obj,evtype,fn,useCapture) {
+		if (obj.addEventListener) {
+			obj.addEventListener(evtype,fn,useCapture);
+		} else {
+			obj.attachEvent("on"+evtype,function () {
+				fn.call(obj);
+			});
+		} else {
+			obj["on"+evtype]=fn;//事实上这种情况不会存在
+		}
+	}
+
+    // 同一个函数可以被注册到同一个对象同一个事件上多次，解决方法：抛弃IE的 attachEvent方法
+    // http://dean.edwards.name/my/events.js
+    </pre>
+    <pre style="font-size: 16px;"
+         class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+    // 5. 取消事件冒泡
+    function stopBubble(e) {
+        if (e && e.stopPropagation) {
+            e.stopPropagation(); //因为传入了事件对象e,并且支持W3C标准的stopPropagation()
+        } else {
+            window.event.cancelBubble = true; //For IE
+        }
+    }
+    </pre>
+    <pre style="font-size: 16px;"
+         class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+    // 6. 重载浏览器默认行为
+    function stopDetault(e) {
+        if (e&&e.preventDetault) {
+            e.preventDefault();
+        } else {
+            window.event.returnValue = false;
+        }
+        return false;
+    }
+    // http://jsfiddle.net/Fe5LA/1/
+    </pre>
+7. 事件对象
+<p>
+    <img src="images/event-obj.png">
+    <br>
+    <img src="images/ie-event-obj.png">
+</p>
+<table class="table table-bordered">
+    <caption>常用事件列表</caption>
+    <tbody>
+    <tr>
+        <th>属性</th>
+        <th>当以下情况发生时，出现此事件</th>
+        <th>FF</th>
+        <th>N</th>
+        <th>IE</th>
+    </tr>
+
+    <tr>
+        <td>onabort</td>
+        <td>图像加载被中断</td>
+        <td>1</td>
+        <td>3</td>
+        <td>4</td>
+    </tr>
+
+    <tr>
+        <td>onblur</td>
+        <td>元素失去焦点</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+    </tr>
+
+    <tr>
+        <td>onchange</td>
+        <td>用户改变域的内容</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+    </tr>
+
+    <tr>
+        <td>onclick</td>
+        <td>鼠标点击某个对象</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+    </tr>
+
+    <tr>
+        <td>ondblclick</td>
+        <td>鼠标双击某个对象</td>
+        <td>1</td>
+        <td>4</td>
+        <td>4</td>
+    </tr>
+
+    <tr>
+        <td>onerror</td>
+        <td>当加载文档或图像时发生某个错误</td>
+        <td>1</td>
+        <td>3</td>
+        <td>4</td>
+    </tr>
+
+    <tr>
+        <td>onfocus</td>
+        <td>元素获得焦点</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+    </tr>
+
+    <tr>
+        <td>onkeydown</td>
+        <td>某个键盘的键被按下</td>
+        <td>1</td>
+        <td>4</td>
+        <td>3</td>
+    </tr>
+
+    <tr>
+        <td>onkeypress</td>
+        <td>某个键盘的键被按下或按住</td>
+        <td>1</td>
+        <td>4</td>
+        <td>3</td>
+    </tr>
+
+    <tr>
+        <td>onkeyup</td>
+        <td>某个键盘的键被松开</td>
+        <td>1</td>
+        <td>4</td>
+        <td>3</td>
+    </tr>
+
+    <tr>
+        <td>onload</td>
+        <td>某个页面或图像被完成加载</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+    </tr>
+
+    <tr>
+        <td>onmousedown</td>
+        <td>某个鼠标按键被按下</td>
+        <td>1</td>
+        <td>4</td>
+        <td>4</td>
+    </tr>
+
+    <tr>
+        <td>onmousemove</td>
+        <td>鼠标被移动</td>
+        <td>1</td>
+        <td>6</td>
+        <td>3</td>
+    </tr>
+
+    <tr>
+        <td>onmouseout</td>
+        <td>鼠标从某元素移开</td>
+        <td>1</td>
+        <td>4</td>
+        <td>4</td>
+    </tr>
+
+    <tr>
+        <td>onmouseover</td>
+        <td>鼠标被移到某元素之上</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+    </tr>
+
+    <tr>
+        <td>onmouseup</td>
+        <td>某个鼠标按键被松开</td>
+        <td>1</td>
+        <td>4</td>
+        <td>4</td>
+    </tr>
+
+    <tr>
+        <td>onreset</td>
+        <td>重置按钮被点击</td>
+        <td>1</td>
+        <td>3</td>
+        <td>4</td>
+    </tr>
+
+    <tr>
+        <td>onresize</td>
+        <td>窗口或框架被调整尺寸</td>
+        <td>1</td>
+        <td>4</td>
+        <td>4</td>
+    </tr>
+
+    <tr>
+        <td>onselect</td>
+        <td>文本被选定</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+    </tr>
+
+    <tr>
+        <td>onsubmit</td>
+        <td>提交按钮被点击</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+    </tr>
+
+    <tr>
+        <td>onunload</td>
+        <td>用户退出页面</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+    </tr>
+    </tbody>
+</table>
+
+8. jQuery中的事件处理：<a target="_blank" href="http://www.w3schools.com/jquery/jquery_ref_events.asp">http://www.w3schools.com/jquery/jquery_ref_events.asp</a>
+</div>
+<h2 id="case2" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#content2">2. DOM&BOM</h2>
+
+<div id="content2" class="panel-collapse collapse in">
+    <h3>浏览器工作原理</h3>
+
+    <p>
+        浏览器的主要组件:
+        <br>
+        <img src="images/browser.png" alt="browser">
+        <br>
+        呈现引擎的基本流程:
+        <br>
+        <img src="images/rendertree.png" alt="render tree">
+        <br>
+        DOM:
+        <pre style="font-size: 16px;"
+             class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+                <html>
+                <body>
+                <p>
+                    Hello World
+                </p>
+
+                <div><img src="example.png"/></div>
+                </body>
+                </html>
+        </pre>
+    <br>
+    可翻译成如下的 DOM 树：
+    <br>
+    <img src="images/DOM.png" alt="DOM">
+    </p>
+    <h3>DOM</h3>
+    <ul class="tip">
+        <li>HTML DOM 是 W3C 标准（是 HTML 文档对象模型的英文缩写，Document Object Model for HTML）。</li>
+        <li>HTML DOM 定义了用于 HTML 的一系列标准的对象，以及访问和处理 HTML 文档的标准方法。</li>
+        <li>通过 DOM，可以访问所有的 HTML 元素，连同它们所包含的文本和属性。可以对其中的内容进行修改和删除，同时也可以创建新的元素。</li>
+        <li>HTML DOM 独立于平台和编程语言。它可被任何编程语言诸如 Java、JavaScript 和 VBScript 使用。</li>
+        <li>仔细阅读教程：<a
+                href="http://www.w3school.com.cn/htmldom/index.asp">http://www.w3school.com.cn/htmldom/index.asp</a>
+        </li>
+    </ul>
+    <h3>BOM</h3>
+
+    <p>
+        <img src="images/bom.gif">
+    </p>
+    jQuery中有关HTML的处理：<a target="_blank" href="http://www.w3schools.com/jquery/jquery_ref_html.asp">http://www.w3schools.com/jquery/jquery_ref_html.asp</a>
+</div>
+<h2 id="case3" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#content3">3. Ajax</h2>
+
+<div id="content3" class="panel-collapse collapse in">
+    <h3>Ajax 定义</h3>
+    <ul class="tip">
+        <li>AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）。</li>
+        <li>AJAX 不是新的编程语言，而是一种使用现有标准的新方法。</li>
+        <li>AJAX 是与服务器交换数据并更新部分网页的艺术，在不重新加载整个页面的情况下。</li>
+    </ul>
+    <h3>Ajax机制</h3>
+    <img src="images/ajax.gif"/>
+
+    <pre style="font-size: 16px;"
+         class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+    // Create Object, Request, Response, readyState.
+    var xmlhttp;
+    if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+    }
+    else {// code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function() {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+            // 0: request not initialized 1: server connection established 2: request received 3: processing request 4: request finished and response is ready
+            document.getElementById("myDiv").innerHTML=xmlhttp.responseText; // responseText, responseXML
+        }
+    }
+    xmlhttp.open("GET","ajax_info.txt",true); // open(method,url,async)
+    xmlhttp.send(); // send(string), post
+    // http://www.w3schools.com/ajax/tryit.asp?filename=tryajax_first
+    </pre>
+
+    jQuery中有关Ajax的处理：<a target="_blank" href="http://www.w3schools.com/jquery/jquery_ref_ajax.asp">http://www.w3schools.com/jquery/jquery_ref_ajax.asp</a>
+</div>
+<h2 id="case4" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#content4">课后作业</h2>
+
+<div id="content4" class="panel-collapse collapse in">
+    <a href="jsquiz.html" target="_blank">javascript基础测验</a>
+</div>

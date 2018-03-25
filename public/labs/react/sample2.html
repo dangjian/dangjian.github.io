@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>例子2：使用JSX</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link href="../common/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../common/css/common.css" rel="stylesheet"/>
+    <link href="../common/Highlighter/shCore.css" rel="stylesheet"/>
+    <link href="../common/Highlighter/ShDefault.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <h1 class="lab-title">例子2：使用JSX</h1>
+    <ol class="breadcrumb">
+        <li><a href="/labs/react">Home</a></li>
+        <li class="active">使用JSX</li>
+    </ol>
+    <div id="lab_code" class="lab-code">
+        <h2>示例代码</h2>
+        <pre style="font-size: 16px;"
+         class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+<script type="text/jsx">
+    var ExampleApplication = React.createClass({
+        render: function() {
+            var elapsed = Math.round(this.props.elapsed  / 100);
+            var seconds = elapsed / 10 + (elapsed % 10 ? '' : '.0' );
+            var message = 'React has been successfully running for ' + seconds + ' seconds.'
+
+            return <span>{message}</span>;
+        }
+    });
+
+    var start = new Date().getTime();
+    setInterval(function() {
+        React.render(
+                <ExampleApplication elapsed = {new Date().getTime() - start} />,
+                document.getElementById('sampleContainer')
+        );
+    }, 50);
+</script>
+    </pre>
+
+        <ul>
+            <li><a href="https://facebook.github.io/jsx/">JSX Specification</a></li>
+            <li><a href="https://facebook.github.io/react/docs/jsx-in-depth.html">JSX in Depth</a></li>
+            <li><a href="https://facebook.github.io/react/jsx-compiler.html">JSX Compiler</a></li>
+        </ul>
+    </div>
+    <div class="lab-demo">
+        <h2>展示效果</h2>
+        <div id="sampleContainer"></div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../common/js/shCore.js"></script>
+<script type="text/javascript" src="../common/js/shLanguage.js"></script>
+<script type="text/javascript" src="../common/js/shLegacy.js"></script>
+<script src="../common/js/react/react.js"></script>
+<script src="../common/js/react/JSXTransformer.js"></script>
+<script type="text/jsx">
+    var ExampleApplication = React.createClass({
+        render: function() {
+            var elapsed = Math.round(this.props.elapsed  / 100);
+            var seconds = elapsed / 10 + (elapsed % 10 ? '' : '.0' );
+            var message = 'React has been successfully running for ' + seconds + ' seconds.'
+
+            return <span>{message}</span>;
+        }
+    });
+
+    var start = new Date().getTime();
+    setInterval(function() {
+        React.render(
+                <ExampleApplication elapsed = {new Date().getTime() - start} />,
+                document.getElementById('sampleContainer')
+        );
+    }, 50);
+</script>
+<script>
+    SyntaxHighlighter.highlight();
+</script>
+</body>
+</html>

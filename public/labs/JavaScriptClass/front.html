@@ -1,0 +1,80 @@
+<h1 class="lab-title">前言</h1>
+<ul class="item-actions">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="javascript:$('.panel-collapse').collapse('toggle');">expand all</a></li>
+</ul>
+<div class="panel-group" id="accordion">
+    <h2 class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#content1">1.
+        Web前端开发现状</h2>
+
+    <div id="content1" class="panel-collapse collapse in">
+        <ul class="tip">
+            <li>起步时间短，但是发展势头迅猛</li>
+            <li>浏览器发展快速</li>
+            <li>开源社区活跃</li>
+            <li>开发人员素质普遍不高</li>
+        </ul>
+    </div>
+
+    <h2 class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#content2">2.
+        JavaScript开发中需要注意的地方</h2>
+
+    <div id="content2" class="panel-collapse collapse in">
+        <ul class="tip">
+            <li>
+                IDE：
+                <p>WebStorm、aptana、VS、eclipse</p>
+            </li>
+            <li>
+                辅助工具：
+                <p>浏览器集成工具、jsLint、YSlow等</p>
+            </li>
+            <li>JavaScript开发注重代码的规范、性能、安全性</li>
+        </ul>
+    </div>
+
+    <h2 class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#content3">3.
+        JavaScript运行原理</h2>
+
+    <div id="content3" class="panel-collapse collapse in">
+        <ul class="tip">
+            <li>JavaScript是客户端脚本语言，外在没有编译过程。新版浏览器会编译Js代码，加快代码的执行速度</li>
+            <li>JavaScript代码会阻塞页面的加载，浏览器遇到script标记时会停止页面剩余部分的加载和解析</li>
+            <li>
+                浏览器解析JavaScript的基本步骤：
+                <p>
+                    1. 读取代码段 <br>
+                    2. 词法分析 <br>
+                    3. 预解析 <br>
+                    4. 执行
+                </p>
+            </li>
+            <li>
+                JavaScript预解析机制：
+                <p>
+                    1. 创建当前执行环境的活动对象，并设置var , function声明的变量提升为活动对象的属性。<br>
+                    2. 重复定义的覆盖<br>
+                    3. 把JavaScript脚本代码转换到字节码
+                </p>
+            </li>
+            <li>
+                JavaScript执行机制：
+                <p>
+                    1. 逐行执行。<br>
+                    2. 遇到变量需要解析时，会从当前执行环境中查找，如果没有找到会从prototype链上查找，如果还没有找到则按照作用域链查找。
+                </p>
+            </li>
+        </ul>
+    </div>
+
+    <h2 class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#content4">4. 学习计划</h2>
+
+    <div id="content4" class="panel-collapse collapse in">
+        <ul class="tip">
+            <li>基本语法</li>
+            <li>标准库</li>
+            <li>DOM和浏览器对象</li>
+            <li>流行的编程实践</li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,787 @@
+<h1 class="lab-title">第三节：JavaScript的一些重要概念</h1>
+<ul class="item-actions">
+    <li><a href="#javascriptclass">Home</a></li>
+    <li><a href="javascript:$('.panel-collapse').collapse('toggle');">expand all</a></li>
+</ul>
+<h2 id="case1" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#content1">1. 数据类型转换</h2>
+
+<div id="content1" class="panel-collapse collapse in">
+    <pre style="font-size: 16px;"
+         class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4;">
+    // 1. 自动转换
+    // 自动转换为布尔值：undefined、null、-0、+0、NaN、''（空字符串）都会转换为false
+    if (!undefined && !null && !0 && !NaN && !''){
+        console.log('true');
+    }
+    // true
+    // 自动转换为字符串：当JavaScript遇到预期为字符串的地方，就会将非字符串的数据自动转为字符串。
+    '5' + 1 // '51'
+    '5' + true // "5true"
+    '5' + false // "5false"
+    '5' + {} // "5[object Object]"
+    '5' + [] // "5"
+    '5' + function (){} // "5function (){}"
+    '5' + undefined // "5undefined"
+    '5' + null // "5null"
+    // 自动转换为数值：当JavaScript遇到预期为数值的地方，就会将参数值自动转换为数值。
+    '5' - '2' // 3
+    '5' * '2' // 10
+    true - 1  // 0
+    false - 1 // -1
+    '1' - 1   // 0
+    '5'*[]    // 0
+    false/'5' // 0
+    'abc'-1   // NaN
+    3 * { valueOf: function () { return 5 } }
+
+    // 2. 强制转换
+    // 强制转换成数值
+    Number("324")
+    // 324
+    Number("324abc")
+    // NaN
+    Number("")
+    // 0
+    Number(null)
+    // 0
+    // 强制转换成字符串
+    String(123)
+    // "123"
+    String(true)
+    // "true"
+    String(undefined)
+    // "undefined"
+    String(null)
+    // "null"
+    // 强制转换成布尔值
+    Boolean(undefined)
+    // false
+    Boolean(null)
+    // false
+    Boolean(0)
+    // false
+    Boolean(NaN)
+    // false
+    Boolean('')
+    // false
+    Boolean([])
+    // true
+    Boolean({})
+    // true
+    Boolean(new Boolean(false))
+    // true
+    </pre>
+</div>
+<h2 id="case4" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#content4">2. this</h2>
+
+<div id="content4" class="panel-collapse collapse in">
+    <pre style="font-size: 16px;"
+         class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+    // 1. 全局代码中的this: 全局范围的this会指向全局对象，即window。
+    var x = 2;
+    alert(this.x) // 2
+    this === window // true
+
+    // 这里this指向了全局对象，即window。在严格模式中，则是undefined。
+    function fooCoder(x) {
+    this.x = x;
+    }
+    fooCoder(2);
+    alert(x);
+    // 全局变量x值为2
+
+    // 2. 对象方法中的调用：this指向当前对象，即如下的person对象。
+    var name = "clever coder";
+    var person = {
+        name : "foocoder",
+        hello : function(sth){
+            console.log(this.name + " says " + sth);
+        }
+    }
+    person.hello("hello world");
+
+    // 3. 作为构造函数： 函数内部的this指向新创建的对象。
+    function FooCoder(sth) {
+        this.name = 'foocoder';
+        this.hello = function(sth) {
+            console.log(this.name + " says " + sth);
+        }
+    }
+    var person = new FooCoder();
+    person.hello("hello world");
+    // http://jsbin.com/oYifOZA/1/edit
+
+    // 4. 内部函数: 在内部函数中，this没有按预想的绑定到外层函数对象上，而是绑定到了全局对象。
+    var name = "clever coder";
+
+    var person = {
+        name : "foocoder",
+        hello : function(sth){
+            var sayhello = function(sth1) {
+                console.log(this.name + " says " + sth1);
+            };
+            sayhello(sth)
+        }
+    }
+    person.hello("hello world");
+    //clever coder says hello world
+    // http://jsfiddle.net/dangjian/fDBt7/1/
+
+    // 5. 使用call和apply设置this
+    // apply和call类似，只是后面的参数是通过一个数组传入，而不是分开传入。两者都是将某个函数绑定到某个具体对象上使用，自然此时的this会被显式的设置为第一个参数。
+    call( thisArg [，arg1，arg2，… ] );
+    // 参数列表，arg1，arg2，...
+    apply(thisArg [，argArray] );
+    // 参数数组，argArray
+
+    // 一些例子
+    <input type="submit" value="提交" onclick="this.value='正在提交数据'"/>
+    // http://jsfiddle.net/dangjian/Bs75V/
+    var foo = function() {
+        console.log(this);
+    }
+    foo();
+    new foo();
+    // http://jsfiddle.net/dangjian/cjBbT/
+    </pre>
+</div>
+<h2 id="case7" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#content7">3. 原型继承</h2>
+
+<div id="content7" class="panel-collapse collapse in">
+    <ul class="tip">
+        <li>
+            对于那些熟悉基于类的面向对象语言(java或者c++)的开发者来说,JavaScript的语法是比较怪异的, 这是由于javascript是一门动态语言,而且它没有类的概念
+            (虽然class是个保留字,不能作为变量名来使用).
+        </li>
+        <li>
+            继承方面,javascript中的每个对象都有一个内部私有的链接指向另一个对象 (或者为 null),这个对象就是原对象的原型. 这个原型也有自己的原型, 直到对象的原型为null为止.
+            这种一级一级的链结构就称为原型链.
+        </li>
+        <li>
+            在Javascript中，只要创建了一个新函数，就会为该函数创建prototype属性，指向函数的原型对象。
+        </li>
+        <li>
+            默认所有原型对象都会有constructor属性，这个属性包含一个指向prototype属性所在函数的指针。通过构造函数创建实例后，每个实例内部都有一个指针指向函数的prototype对象。Firefox，safari，Chrome中这个指针是__proto__，可以通过脚本访问。但是在IE中这个属性是不可见的，所以无法在IE中修改__proto__。同时，这个属性的关联关系是在实例与构造函数的prototope对象之间，而不是实例跟构造函数之间。
+        </li>
+        <li>
+            javascript对象有两种不同的属性,一种是对象自身的属性,另外一种是继承于原型链上的属性
+        </li>
+    </ul>
+
+    <pre style="font-size: 16px;"
+         class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+    [].__proto__ === Array.prototype
+    // true
+    [].__proto__.__proto__ === Object.prototype
+    //true
+    (new String()).__proto__ === String.prototype
+    //true
+    </pre>
+    <pre style="font-size: 16px;"
+         class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+    // 例子2
+    function Person(){
+
+    }
+    Person.prototype.name = "dangjian";
+    Person.prototype.job = "engineer";
+    var person1 = new Person();
+    var person2 = new Person();
+    </pre>
+    <img src="images/prototype.jpg" alt="prototype">
+
+    <p class="tip">
+        从上图 可以看出： Person.prototype.constructor 指向
+        Person。可以说，由prototype、constructor、__proto__三个指针构成了整个javascript的原型链。另外要注意一点，__proto__这个属性存在于实例中，而prototype只存在函数对象中，实例中不存在prototype对象。
+    </p>
+    <pre style="font-size: 16px;"
+         class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+    // prototype属性: 由于函数本身也是一个对象，因此它拥有来自构造函数的原型，即javascript的Function object。但是，函数本身的prototype属性仅仅用于函数实例的属性继承，而函数本身不会使用这个关联的prototype。（在prototype中设置的属性将直接作用于所有实例）
+    function Person(){}
+    Person.prototype.name = "Thom";
+    var person1 = new Person();
+    person1.name; // Thom
+    Person.name; // Person
+
+    // constructor属性: 原型的属性是共享的，因此，constructor属性也是共享的，可以通过实例访问。
+    console.log(person1.constructor); //function Person(){ }
+    console.log(person1.constructor == Person.constructor); //false
+    console.log(person1.constructor == Person.prototype.constructor); //true
+
+    // 原型链属性的读取:读取对象属性时，先搜索实例本身，如果找到对应属性则停止搜索，如果没有找到，再搜索原型对象。因此，在实例中添加原型同名属性，不会影响到其他实例。
+    function Person(){}
+    Person.prototype.name = "Alan";
+    var person1 = new Person();
+    var person2 = new Person();
+    person1.name = "Nolen";
+    alert(person1.name); //Nolen
+    alert(person2.name); //Alan
+
+    // 由于原型和实例之间通过指针关联起来，因此对原型做的修改可以从实例上表现出来，
+    function Person(){}
+    Person.prototype.name = "Alan";
+    var person1 = new Person();
+    Person.prototype.age = 1;
+    alert(person1.name); //Alan
+    alert(person1.age); //1
+
+    // in 操作符及 hasOwnProperty()方法: in操作符会同时检测原型和实例，而hasOwnProperty方法只会检测实例。
+    function Person(){}
+    Person.prototype.name = "Alan";
+    var person1 = new Person();
+    alert(person1.hasOwnProperty("name"));//false
+    alert("name" in person1);//true
+    person1.name = "Nolen";
+    alert(person1.hasOwnProperty("name"));//true
+    alert("name" in person1);//true
+    </pre>
+
+</div>
+<h2 id="case5" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#content5">4.
+    作用域和作用域链</h2>
+
+<div id="content5" class="panel-collapse collapse in">
+    <pre style="font-size: 16px;"
+         class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+    // 1. 作用域表示变量和函数起作用的区域。JavaScript的作用域一共分为两种：全局作用域和局部作用域。在Javascript中本地作用域是按照函数来区分的。
+    var global = "11"; //全局作用域
+    function fun() {
+        var local = "22";//本地作用域1
+    }
+    function fun2() {
+        var local2 = "22";//本地作用域2
+        for (var i=0;i<100;i++) {
+            //本地作用域2
+        }
+    }
+    // 2. JavaScript没有块级作用域。http://jsfiddle.net/dangjian/KCQHG/
+    function rainman(){
+        // rainman函数体内存在三个局部变量 i j k
+        var i = 0;
+        if ( 1 ) {
+            var j = 0;
+            for(var k = 0; k < 3; k++) {
+                alert( k );    //分别弹出 0 1 2
+            }
+            alert( k );        //弹出3
+        }
+        alert( j );            //弹出0
+    }
+    // 3. 未使用var关键字定义的变量都是全局变量。http://jsfiddle.net/dangjian/bHQXN/
+    function rain(){
+        x = 100;    //声明了全局变量x并进行赋值
+    }
+    rain();
+    alert( x );    //会弹出100
+
+    // 4. 作用域链：函数对象和其它对象一样，拥有可以通过代码访问的属性和一系列仅供JavaScript引擎访问的内部属性。其中一个内部属性是[[Scope]]，由ECMA-262标准第三版定义，该内部属性包含了函数被创建的作用域中对象的集合，这个集合被称为函数的作用域链，它决定了哪些数据能被函数访问。
+    // 当一个函数创建后，它的作用域链会被创建此函数的作用域中可访问的数据对象填充。
+    function add(num1,num2) {
+        var sum = num1 + num2;
+        return sum;
+    }
+    var total = add(5,10);
+    </pre>
+    <p class="tip">
+        在函数add创建时，它的作用域链中会填入一个全局对象，该全局对象包含了所有全局变量，如下图所示（注意：图片只例举了全部变量中的一部分）：
+        <br>
+        <img src="images/scope1.jpg">
+        <br>
+        执行此函数时会创建一个称为“运行期上下文(execution
+        context)”的内部对象，运行期上下文定义了函数执行时的环境。每个运行期上下文都有自己的作用域链，用于标识符解析，当运行期上下文被创建时，而它的作用域链初始化为当前运行函数的[[Scope]]所包含的对象。
+        <br>
+        这些值按照它们出现在函数中的顺序被复制到运行期上下文的作用域链中。它们共同组成了一个新的对象，叫“活动对象(activation
+        object)”，该对象包含了函数的所有局部变量、命名参数、参数集合以及this，然后此对象会被推入作用域链的前端，当运行期上下文被销毁，活动对象也随之销毁。新的作用域链如下图所示：
+        <br>
+        <img src="images/scope2.jpg">
+        <br>
+    </p>
+    <pre style="font-size: 16px;"
+         class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+    // 5.Javascript的作用域链也是按有顺序查询的。在访问变量时，先查看本地作用域是否有此变量，如果没有则依次向上一级作用域查找直到全局作用域。
+    // http://jsfiddle.net/dangjian/4SJEW/
+    function doSomething(){
+        var blogName="dangjian";
+        function innerSay(){
+            alert(blogName);
+        }
+        innerSay();
+    }
+    doSomething();
+    alert(blogName); //脚本错误
+    innerSay(); //脚本错误
+
+    // 6. 函数体内部，局部变量的优先级比同名的全局变量高。http://jsfiddle.net/dangjian/VtVYd/
+    var rain = 1;    //定义全局变量 rain
+    function check(){
+        var rain = 100;    //定义局部变量rain
+        alert( rain );       //这里会弹出 100
+    }
+    check();
+    alert( rain );    //这里会弹出1
+
+    // 7.作用域链和代码优化:
+    // 从作用域链的结构可以看出，在运行期上下文的作用域链中，标识符所在的位置越深，读写速度就会越慢。如上图所示，因为全局变量总是存在于运行期上下文作用域链的最末端，因此在标识符解析的时候，查找全局变量是最慢的。所以，在编写代码的时候应尽量少使用全局变量。
+    function changeColor(){
+        document.getElementById("btnChange").onclick=function(){
+            document.getElementById("targetCanvas").style.backgroundColor="red";
+        };
+    }
+    // 这个函数引用了两次全局变量document，查找该变量必须遍历整个作用域链，直到最后在全局对象中才能找到。这段代码可以重写如下：
+    function changeColor(){
+        var doc=document;
+        doc.getElementById("btnChange").onclick=function(){
+            doc.getElementById("targetCanvas").style.backgroundColor="red";
+        };
+    }
+    // 8. 改变作用域链: 避免使用width
+    // with语句是对象的快捷应用方式，用来避免书写重复代码。
+    // 当代码运行到with语句时，运行期上下文的作用域链临时被改变了。一个新的可变对象被创建，它包含了参数指定的对象的所有属性。这个对象将被推入作用域链的头部，这意味着函数的所有局部变量现在处于第二个作用域链对象中，因此访问代价更高了。
+    function initUI(){
+        with(document){当代码运行到with语句时，运行期上下文的作用域链临时被改变了。一个新的可变对象被创建，它包含了参数指定的对象的所有属性。这个对象将被推入作用域链的头部，这意味着函数的所有局部变量现在处于第二个作用域链对象中，因此访问代价更高了。
+            var bd=body,
+                links=getElementsByTagName("a"),
+                i=0,
+                len=links.length;
+            while(i < len){
+                update(links[i++]);
+            }
+            getElementById("btnInit").onclick=function(){
+                doSomething();
+            };
+        }
+    }
+    // 9. 封闭作用域
+    (function(){
+        ...
+    })()
+    </pre>
+</div>
+<h2 id="case6" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#content6">5. 闭包</h2>
+
+<div id="content6" class="panel-collapse collapse in">
+    <p class="tip">
+        闭包的定义(<a href="http://zh.wikipedia.org/wiki/%E9%97%AD%E5%8C%85_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6)">维基百科</a>)：在计算机科学中，闭包（Closure）是词法闭包（Lexical
+        Closure）的简称，是引用了自由变量的函数。这个被引用的自由变量将和这个函数一同存在，即使已经离开了创造它的环境也不例外。所以，有另一种说法认为闭包是由函数和与其相关的引用环境组合而成的实体。
+        <br>
+        Peter J. Landin 在1964年将术语闭包定义为一种包含环境成分和控制成分的实体。
+    </p>
+    <pre style="font-size: 16px;"
+         class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+    // 函数访问了其外部的变量，那这个函数就构成了一个闭包。
+    function foo(x) {
+        var tmp = 3;
+        return function (y) {
+            alert(x + y + (++tmp));
+        }
+    }
+    var bar = foo(2); // bar is now a closure.
+    bar(10);
+
+    // 因为在函数执行结束后，其中的某些内容存在外部调用，所以其中的变量状态一直保持。
+    function foo(x) {
+        var tmp = 3;
+        return function (y) {
+            alert(x + y + (++tmp));
+        }
+    }
+    var bar = foo(2); // bar is now a closure.
+    bar(10);
+    bar(10);
+    bar(10);
+    bar(10);
+    // http://jsfiddle.net/dangjian/NdcU5/
+
+    // 一些闭包的例子：
+    function say667() {
+        // Local variable that ends up within closure
+        var num = 666;
+        var sayAlert = function() { alert(num); }
+        num++;
+        return sayAlert;
+    }
+
+    var say = say667();
+    say();
+    //  http://jsfiddle.net/dangjian/U82MV/
+
+    function buildList(list) {
+        var result = [];
+        for (var i = 0; i < list.length; i++) {
+            var item = 'item' + list[i];
+            result.push( function() {alert(item + ' ' + list[i])} );
+        }
+        return result;
+    }
+    function testList() {
+        var fnlist = buildList([1,2,3]);
+        // Using j only to help prevent confusion -- could use i.
+        for (var j = 0; j < fnlist.length; j++) {
+            fnlist[j]();
+        }
+    }
+    testList()
+    // http://jsfiddle.net/dangjian/EMfqx/
+
+    function sayAlice() {
+        var sayAlert = function() { alert(alice); }
+        // Local variable that ends up within closure
+        var alice = 'Hello Alice';
+        return sayAlert;
+    }
+    sayAlice()();
+    // http://jsfiddle.net/dangjian/rza65/
+    </pre>
+</div>
+<h2 id="case3" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#content3">6. 严格模式</h2>
+
+<div id="content3" class="panel-collapse collapse in">
+    <p class="tip">
+        除了正常运行模式，ECMAscript 5添加了第二种运行模式：“严格模式”（strict mode）。顾名思义，这种模式使得Javascript在更严格的条件下运行。
+        <br>
+        设立”严格模式“的目的，主要有以下几个：
+        <br>
+        1. 消除Javascript语法的一些不合理、不严谨之处，减少一些怪异行为;
+        <br>
+        2. 消除代码运行的一些不安全之处，保证代码运行的安全；
+        <br>
+        3. 提高编译器效率，增加运行速度；
+        <br>
+        4. 为未来新版本的Javascript做好铺垫。
+        <br>
+        “严格模式”体现了Javascript更合理、更安全、更严谨的发展方向，<a target="_blank" href="http://kangax.github.io/es5-compat-table/">包括IE
+        10在内的主要浏览器，都已经支持它，许多大项目已经开始全面拥抱它。</a>
+        <br>
+        同样的代码，在"严格模式"中，可能会有不一样的运行结果；一些在"正常模式"下可以运行的语句，在"严格模式"下将不能运行。
+    </p>
+    <pre style="font-size: 16px;"
+         class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+    // 1. 进入“严格模式”的标志：老版本的浏览器会把它当作一行普通字符串，加以忽略。
+    "use strict";
+    // 将"use strict"放在脚本文件的第一行，则整个脚本都将以“严格模式”运行。
+    <script>
+        "use strict";
+        console.log("这是严格模式。");
+    </script>
+    <script>
+        console.log("这是正常模式。");
+    </script>
+
+    // 2. 调用方式
+    // 将“use strict”放在函数体的第一行，则整个函数以“严格模式”运行。
+    function strict(){
+
+      "use strict";
+
+      return "这是严格模式。";
+    }
+
+    function notStrict() {
+
+        return "这是正常模式。";
+
+    }
+    // 因为第一种调用方法不利于文件合并，所以更好的做法是，借用第二种方法，将整个脚本文件放在一个立即执行的匿名函数之中。
+    (function (){
+
+        "use strict";
+
+        // some code here
+
+    })();
+
+    // 3. 语法和行为改变
+    // 全局变量显式声明:严格模式下，变量都必须先用var命令声明，然后再使用。
+    "use strict";
+
+    v = 1; // 报错，v未声明
+
+    for(i = 0; i < 2; i++) { // 报错，i未声明
+    }
+    // 静态绑定：严格模式对动态绑定做了一些限制。具体如下
+    // 禁止使用with语句:因为with语句无法在编译时就确定，属性到底归属哪个对象。
+    "use strict";
+    var v  = 1;
+    with (o){ // 语法错误
+        v = 2;
+    }
+    // 严格模式下，eval语句本身就是一个作用域，不再能够生成全局变量了，它所生成的变量只能用于eval内部。
+    "use strict";
+    var x = 2;
+    console.info(eval("var x = 5; x")); // 5
+    console.info(x); // 2
+    // 严格模式下，禁止this关键字指向全局对象
+    function f(){
+        return !this;
+    }
+    // 返回false，因为“this”指向全局对象，“!this”就是false
+
+    function f(){
+        "use strict";
+        return !this;
+    }
+    // 返回true，因为严格模式下，this的值为undefined，所以"!this"为true。
+
+    // 严格模式下无法删除变量。只有configurable设置为true的对象属性，才能被删除。
+    "use strict";
+    var x;
+    delete x; // 语法错误
+    var o = Object.create(null, {
+        x: {
+            value: 1,
+            configurable: true
+        }
+    });
+    delete o.x; // 删除成功
+    // 对象不能有重名的属性
+    "use strict";
+    var o = {
+        p: 1,
+        p: 2
+    }; // 语法错误
+    // 函数不能有重名的参数
+    "use strict";
+    function f(a, a, b) { // 语法错误
+        return ;
+    }
+    // 禁止八进制表示法
+    "use strict";
+    var n = 0100; // 语法错误
+    // 不允许对arguments赋值, arguments不再追踪参数的变化
+    "use strict";
+    arguments++; // 语法错误
+    var obj = { set p(arguments) { } };  // 语法错误
+    try { } catch (arguments) { }  // 语法错误
+    function arguments() { }  // 语法错误
+    var f = new Function("arguments", "'use strict'; return 17;");  // 语法错误
+    function f(a) {
+      a = 2;
+      return [a, arguments[0]];
+    }
+    f(1); // 正常模式为[2,2]
+    function f(a) {
+      "use strict";
+      a = 2;
+      return [a, arguments[0]];
+    }
+    f(1); // 严格模式为[2,1]
+    // 函数必须声明在顶层
+    "use strict";
+    if (true) {
+      function f() { } // 语法错误
+    }
+    </pre>
+</div>
+<h2 id="case2" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#content2">7. 错误处理</h2>
+
+<div id="content2" class="panel-collapse collapse in">
+    <ul class="tip">
+        <li>Error: name：错误名称,message：错误提示信息</li>
+        <li>EvalError：执行代码时发生的错误。</li>
+        <li>RangeError：当一个数值型变量或参数超出有效范围时发生的错误。</li>
+        <li>ReferenceError：引用一个不存在的变量时发生的错误。</li>
+        <li>SyntaxError：解析代码时发生的语法错误。</li>
+        <li>TypeError：变量或参数的类型无效时发生的错误。</li>
+        <li>URIError：向encodeURI() 或者 decodeURI() 传入无效参数时发生的错误。</li>
+    </ul>
+        <pre style="font-size: 16px;"
+             class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+        // try...catch
+        try {
+            throw new Error('出错了!');
+        } catch (e) {
+            console.log(e.name + ": " + e.message);  // Error: 出错了！
+        } finally {
+           // todo
+        }
+
+        try {
+           throw n; // 这里抛出一个整数
+        } catch (e) {
+           if (e <= 50) {
+              // 针对1-50的错误的处理
+           } else {
+              // 大于50的错误无法处理，再抛出一个错误
+              throw e;
+           }
+        }
+        // onerror事件：http://jsfiddle.net/dangjian/ay8k6/
+        window.onerror = function(message, url, linenumber){
+            var message = {message: message , line: linenumber, url: url, agent: navigator.userAgent};
+            alert(JSON.stringify(message));
+        }
+
+        throw new Error('dangjian');
+        </pre>
+</div>
+<h2 id="case0" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#content0">8. 同源策略</h2>
+
+<div id="content0" class="panel-collapse collapse in">
+    <p class="tip">
+        同源策略阻止从一个源加载的文档或脚本获取或设置另一个源加载的文档的属性。
+        <br>
+        如果两个页面的<strong class="text-primary">协议</strong>、<strong class="text-primary">端口</strong>（如果指明了的话）和<strong
+            class="text-primary">主机名</strong>都相同，认为这两个页面拥有相同的源。
+    </p>
+    <table class="table table-bordered">
+        <caption>下表给出了相对http://store.company.com/dir/page.html同源检测的结果:</caption>
+        <tbody>
+        <tr>
+            <th>URL</th>
+            <th>结果</th>
+            <th>原因</th>
+        </tr>
+        <tr>
+            <td><code><span class="nowiki">http://store.company.com/dir2/other.html</span></code></td>
+            <td>成功</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><code><span class="nowiki">http://store.company.com/dir/inner/another.html</span></code></td>
+            <td>成功</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><code><span class="nowiki">https://store.company.com/secure.html</span></code></td>
+            <td>失败</td>
+            <td>协议不同</td>
+        </tr>
+        <tr>
+            <td><code><span class="nowiki">http://store.company.com:81/dir/etc.html</span></code></td>
+            <td>失败</td>
+            <td>端口不同</td>
+        </tr>
+        <tr>
+            <td><code><span class="nowiki">http://news.company.com/dir/other.html</span></code></td>
+            <td>失败</td>
+            <td>主机名不同</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h3>绕过同源策略的几种方式</h3>
+
+    <p>
+        方式1：在同源策略中有一个例外，脚本可以设置 document.domain
+        的值为当前域的一个后缀，比如域store.company.com的后缀可以是company.com。如果这样做的话，短的域将作为后续同源检测的依据。例如，假设在
+        http://store.company.com/dir/other.html 中的一个脚本执行了下列语句：
+    </p>
+    <pre style="font-size: 16px;"
+         class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+    document.domain = 'company.com';
+	var ifr = document.createElement('iframe');
+	ifr.src = 'http://script.company.com/b.html';
+	ifr.style.display = 'none';
+	document.body.appendChild(ifr);
+	ifr.onload = function(){
+		var x = ifr.contentDocument;
+		alert(x.getElementsByTagName("h1")[0].childNodes[0].nodeValue);
+	}
+    // 页面将会成功地通过对 http://company.com/dir/page.html 的同源检测。而同理，company.com 不能设置 document.domain 为 othercompany.com.
+
+    </pre>
+    <p>
+        方式2： 动态创建script，浏览器默认禁止了跨域访问，但并不禁止在页面中引用其他域的JS文件，并可以自由执行引入的JS文件中的function，根据这一点，可以方便地通过创建script节点的方法来实现完全跨域的通信。
+        主要用于跨域取得数据，JSONP
+    </p>
+
+    <p class="tip">
+        sonp(JSON with Padding)是资料格式 json 的一种“使用模式”，可以让网页从别的网域获取资料。
+        由于同源策略，一般来说位于 server1.example.com 的网页无法与不是 server1.example.com的服务器沟通，而 HTML 的 script 元素是一个例外。利用 script
+        元素的这个开放策略，网页可以得到从其他来源动态产生的 JSON 资料，而这种使用模式就是所谓的 JSONP。用 JSONP 抓到的资料并不是 JSON，而是任意的JavaScript，用 JavaScript
+        直译器执行而不是用 JSON 解析器解析。
+    </p>
+
+    <p>方式3：通过iframe和popup，各种第三方登录就是使用这种方式，具体做法：
+        <br>
+        1，通过在http://example1.com/index.php页面中创建指向http://example2.com/getinfo.php的iframe节点跨域提交GET请求。
+        <br>
+        2. 要在example1.com下放置一个跨域文件，比如路径是http://example1.com/crossdomain.html。
+        <br>
+        3.
+        当http://example2.com/getinfo.php这个请求返回结果的时候，做一个302跳转，跳转到跨域文件http://example1.com/crossdomain.html，同时将返回结果经过URL编码之后作为参数缀在跨域文件URL后面。
+        <br>
+        4.
+        在跨域文件中，包含一段JavaScript代码，这段代码完成的功能，是从URL中提取结果参数，经过一定处理后调用原来的http://example1.com/index.php页面中的一个预先约定好的callback函数，同时将结果参数传给这个函数。
+        <br>
+    </p>
+
+    <p>方式4：使用HTML5 postMessage，下一代浏览器都将支持这个功能：Chrome 2.0+、Internet Explorer 8.0+, Firefox 3.0+, Opera 9.6+, 和 Safari
+        4.0+ 。 Facebook已经使用了这个功能，用postMessage支持基于web的实时消息传递。</p>
+    <pre style="font-size: 16px;"
+         class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+    <iframe id="ifr" src="b.com/index.html"></iframe>
+    <script type="text/javascript">
+        window.onload = function () {
+            var ifr = document.getElementById('ifr');
+            var targetOrigin = 'http://b.com';  // 若写成'http://b.com/c/proxy.html'效果一样
+            // 若写成'http://c.com'就不会执行postMessage了
+            ifr.contentWindow.postMessage('I was there!', targetOrigin);
+        };
+    </script>
+    // b.com/index.html中的代码：
+    <script type="text/javascript">
+        window.addEventListener('message', function (event) {
+            // 通过origin属性判断消息来源地址
+            if (event.origin == 'http://a.com') {
+                alert(event.data);    // 弹出"I was there!"
+                alert(event.source);  // 对a.com、index.html中window对象的引用
+                // 但由于同源策略，这里event.source不可以访问window对象
+            }
+        }, false);
+    </script>
+    </pre>
+</div>
+<h2 id="case8" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#content8">课后作业(1)</h2>
+
+<div id="content8" class="panel-collapse collapse in">
+    给Array添加一个distinct函数，去掉数组中重复的元素。元素值仅考虑原始类型，不需要考虑复合类型。
+    测试用例：
+    <pre style="font-size: 16px;"
+         class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+    ["abc", "a", "b", "c", "abc", "a", "b", "c"].distinct() // ["abc","a","b", "c"]
+    [1,2,3,4,5,4,3,2,'1'].distinct() // [1,2,3,4,5,'1']
+    </pre>
+</div>
+<h2 id="case9" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#content9">课后作业(2)</h2>
+
+<div id="content9" class="panel-collapse collapse in">
+    <h3>完成一个计算器的UI</h3>
+    <ul class="tip">
+        <li>1，可以利用CSS3，HTML5新特性，尽量不要用背景图</li>
+        <li>2，做到HTML结构和CSS代码简洁清晰。CSS和HTML结构分离</li>
+        <li>3，运算至少包含加、减、乘、除、取余</li>
+    </ul>
+    <p>
+        以下是一些参考界面：
+        <br>
+        界面1：
+        <br>
+        <img src="images/calculator/1.jpg">
+        <br>
+        界面2：
+        <br>
+        <img src="images/calculator/2.png">
+        <br>
+        界面3：
+        <br>
+        <img src="images/calculator/3.jpg">
+        <br>
+        界面4：
+        <br>
+        <img src="images/calculator/4.jpg">
+        <br>
+        界面5：
+        <br>
+        <img src="images/calculator/5.png">
+        <br>
+        界面6：
+        <br>
+        <img src="images/calculator/6.jpg">
+        <br>
+        界面7：
+        <br>
+        <img src="images/calculator/7.jpg">
+        <br>
+    </p>
+</div>

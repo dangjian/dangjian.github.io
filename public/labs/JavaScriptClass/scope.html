@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8 />
+    <title>JS Bin</title>
+    <style type="text/css">
+    a#test {color:#ffff00;}
+    a.test:link {color:red;}
+    a:visited {color:red;}
+    </style>
+    <script>
+        function Foo() {}
+        Foo.prototype = 1; // 无效
+        alert(Foo.prototype.constructor);
+    </script>
+</head>
+<body>
+<a id="test" href="http://www.baidu.com">baidu</a>
+<a id="test1" href="http://www.baidu.com" class="test">baidu</a>
+</body>
+</html>

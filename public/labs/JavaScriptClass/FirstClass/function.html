@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>code: function</title>
+    <script>
+        function print(){
+            // ...
+        }
+        var print = function (){
+            // ...
+        };
+        var print = function (){
+            // ...
+        };
+        var add = new Function("x","y","return (x+y)");
+
+        function add(x,y) {
+            return (x+y);
+        }
+
+        add(1,1)
+        // 2
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

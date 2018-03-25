@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html  xmlns:wb=“http://open.weibo.com/wb”>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>JavaScript基础测试</title>
+    <link type="text/css" rel="stylesheet" href="../common/css/bootstrap.min.css"/>
+    <link type="text/css" rel="stylesheet" href="../common/css/base.css"/>
+    <link type="text/css" rel="stylesheet" href="../common/css/lab.css"/>
+    <link type="text/css" rel="stylesheet" href="../common/Highlighter/shCore.css"/>
+    <link type="text/css" rel="stylesheet" href="../common/Highlighter/ShThemeDefault.css"/>
+    <style>
+        .lab-content-inner {
+            padding: 15px;
+        }
+        .answer-message {
+          visibility: hidden;
+          margin-top: 20px;
+        }
+        .answer-message.show {
+            visibility: visible;
+        }
+        h2 {
+            font-size: 18px;
+        }
+    </style>
+
+    <script type="text/javascript" src="../common/js/jquery-1.8.2.js"></script>
+    <script type="text/javascript" src="../common/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../common/js/shCore.js"></script>
+    <script type="text/javascript" src="../common/js/shLanguage.js"></script>
+    <script type="text/javascript" src="../common/js/shLegacy.js"></script>
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div class="lab-header">
+    <nav class="lab-menus">
+        <ul class="nav nav-pills">
+            <li><a href="/" target="_blank">博客首页</a></li>
+            <li><a href="/?page_id=97" target="_blank">全部项目</a></li>
+            <li><a href="https://www.github.com/dangjian" target="_blank">GitHub</a></li>
+        </ul>
+    </nav>
+    <div class="header-banner"></div>
+</div>
+<div class="lab-content">
+    <div class="lab-content-inner">
+        <h1 class="lab-title">JavaScript基础测试</h1>
+        <p class="alert alert-info">
+            JavaScript是一门很独特的程序语言，非常的灵活，但经常会有一些让人难以理解的“坑”存在。国外有很多针对这些难以理解的点编辑的测验题，帮助新手们更好地理解这些“坑”背后的原理。我从中精选了12个自认为比较重要测验点，供各位参考学习。
+            <br>
+            同时，针对这些题目也写了一篇解答文章，<a href="/?p=252">JavaScript基础测试题解答</a>，大家在测验完成后，可以对着解答详细了解这些点对应的原理。请确认每个题目都有答案被选中，未选题目按照答错处理。
+        </p>
+        <wb:share-button addition="full" type="button" ralateUid="1740070254" default_text="JavaScript基础测验。" picture_search="false" ></wb:share-button>
+        <ul>
+            <li>
+                <h2>1. 如下代码返回的结果为？</h2>
+        <pre style="font-size: 16px;"
+                class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+function foo() {
+    alert(x);
+    var x = 10;
+}
+foo();
+        </pre>
+                <ol>
+                    <li><label><input type="radio" name="item1" id="item1_1">运行错误</label></li>
+                    <li><label><input type="radio" name="item1" id="item1_2">弹出<code>undefined</code></label></li>
+                    <li><label><input type="radio" name="item1" id="item1_3">弹出<code>10</code></label></li>
+                </ol>
+            </li>
+            <li>
+                <h2>2. 如下代码返回的结果为？</h2>
+        <pre style="font-size: 16px;"
+             class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+function foo() {
+    alert(x);
+    x = 10;
+}
+foo();
+        </pre>
+                <ol>
+                    <li><label><input type="radio" name="item2" id="item2_1">运行错误</label></li>
+                    <li><label><input type="radio" name="item2" id="item2_2">弹出<code>undefined</code></label></li>
+                    <li><label><input type="radio" name="item2" id="item2_3">弹出<code>10</code></label></li>
+                </ol>
+            </li>
+            <li>
+                <h2>3. 如下代码返回的结果为？</h2>
+        <pre style="font-size: 16px;"
+             class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+function bar(){
+	foo();
+
+	function foo(){
+		alert(99);
+	};
+}
+bar();
+        </pre>
+                <ol>
+                    <li><label><input type="radio" name="item3" id="item3_1">运行错误</label></li>
+                    <li><label><input type="radio" name="item3" id="item3_2">弹出<code>99</code></label></li>
+                    <li><label><input type="radio" name="item3" id="item3_3">以上都错</label></li>
+                </ol>
+            </li>
+            <li>
+                <h2>4. 如下代码返回的结果为？</h2>
+        <pre style="font-size: 16px;"
+             class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+function foo(){
+	for (var i = 0; i < 5; i++){
+		alert(i);
+	}
+	alert(i);
+}
+foo();
+        </pre>
+                <ol>
+                    <li><label><input type="radio" name="item4" id="item4_1">运行错误</label></li>
+                    <li><label><input type="radio" name="item4" id="item4_2">弹出<code>0, 1, 2, 3, 4, undefined</code></label></li>
+                    <li><label><input type="radio" name="item4" id="item4_3">弹出<code>0, 1, 2, 3, 4, {runtime error}</code></label></li>
+                    <li><label><input type="radio" name="item4" id="item4_4">弹出<code>0, 1, 2, 3, 4, 5</code></label></li>
+                </ol>
+            </li>
+            <li>
+                <h2>5. 以下结果返回true还是false？</h2>
+        <pre style="font-size: 16px;"
+             class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+function Foo(){
+	var bestBand = 'Jimmy Eat World';
+}
+Foo.prototype.tellMe = function(){
+    alert(this.bestBand);
+};
+
+var f1 = new Foo();
+var f2 = new Foo();
+alert(f1.tellMe === f2.tellMe);
+        </pre>
+                <ol>
+                    <li><label><input type="radio" name="item5" id="item5_1">true</label></li>
+                    <li><label><input type="radio" name="item5" id="item5_2">false</label></li>
+                </ol>
+            </li>
+            <li>
+                <h2>6. 如下代码返回的结果为？</h2>
+        <pre style="font-size: 16px;"
+             class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+var i = 5;
+while (i--){
+	setTimeout(function(){
+		alert(i);
+	}, 100);
+}
+        </pre>
+                <ol>
+                    <li><label><input type="radio" name="item6" id="item6_1">弹出<code>5, 4, 3, 2, 1</code></label></li>
+                    <li><label><input type="radio" name="item6" id="item6_2">弹出<code>4, 3, 2, 1, 0</code></label></li>
+                    <li><label><input type="radio" name="item6" id="item6_3">弹出<code> 5, 4, 3, 2, 1, 0</code></label></li>
+                    <li><label><input type="radio" name="item6" id="item6_4">弹出<code>-1, -1, -1, -1, -1</code></label></li>
+                </ol>
+            </li>
+            <li>
+                <h2>7. 如下代码返回的结果为？</h2>
+        <pre style="font-size: 16px;"
+             class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+var f = function g(){
+    return 23;
+};
+alert(g());
+        </pre>
+                <ol>
+                    <li><label><input type="radio" name="item7" id="item7_1">弹出<code>number</code></label></li>
+                    <li><label><input type="radio" name="item7" id="item7_2">弹出<code>undefined</code></label></li>
+                    <li><label><input type="radio" name="item7" id="item7_3">弹出<code>function</code></label></li>
+                    <li><label><input type="radio" name="item7" id="item7_4">运行错误</label></li>
+                </ol>
+            </li>
+            <li>
+                <h2>8. 如下代码返回的结果为？</h2>
+        <pre style="font-size: 16px;"
+             class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+ var y = 1, x = y = typeof x;
+alert(x);
+        </pre>
+                <ol>
+                    <li><label><input type="radio" name="item8" id="item8_1">弹出<code>1</code></label></li>
+                    <li><label><input type="radio" name="item8" id="item8_2">弹出<code>number</code></label></li>
+                    <li><label><input type="radio" name="item8" id="item8_3">弹出<code>undefined</code></label></li>
+                    <li><label><input type="radio" name="item8" id="item8_4">运行错误</label></li>
+                </ol>
+            </li>
+            <li>
+                <h2>9. 如下代码返回的结果为？</h2>
+        <pre style="font-size: 16px;"
+             class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+var foo = {
+    bar: function() {
+        return this.baz;
+    },
+    baz: 1
+};
+(function(){
+    alert(typeof arguments[0]());
+})(foo.bar);
+        </pre>
+                <ol>
+                    <li><label><input type="radio" name="item9" id="item9_1">弹出<code>undefined</code></label></li>
+                    <li><label><input type="radio" name="item9" id="item9_2">弹出<code>object</code></label></li>
+                    <li><label><input type="radio" name="item9" id="item9_3">弹出<code>number</code></label></li>
+                    <li><label><input type="radio" name="item9" id="item9_4">弹出<code>function</code></label></li>
+                </ol>
+            </li>
+            <li>
+                <h2>10. 如下代码返回的结果为true还是false？</h2>
+        <pre style="font-size: 16px;"
+             class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+function f(){
+    return f;
+}
+alert(new f() instanceof f);
+        </pre>
+                <ol>
+                    <li><label><input type="radio" name="item10" id="item10_1">true</label></li>
+                    <li><label><input type="radio" name="item10" id="item10_2">false</label></li>
+                </ol>
+            </li>
+            <li>
+                <h2>11. 如下代码返回的结果为？</h2>
+        <pre style="font-size: 16px;"
+             class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+var x = 1;
+if (function f(){}) {
+    x += typeof f;
+}
+alert(x);
+        </pre>
+                <ol>
+                    <li><label><input type="radio" name="item11" id="item11_1">弹出<code>1</code></label></li>
+                    <li><label><input type="radio" name="item11" id="item11_2">弹出<code>1function</code></label></li>
+                    <li><label><input type="radio" name="item11" id="item11_3">弹出<code>1undefined</code></label></li>
+                    <li><label><input type="radio" name="item11" id="item11_4">弹出<code>NaN</code></label></li>
+                </ol>
+            </li>
+            <li>
+                <h2>12. 如下代码返回的结果为？</h2>
+        <pre style="font-size: 16px;"
+             class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+(function(x){
+    delete x;
+    alert(x);
+})(1);
+        </pre>
+                <ol>
+                    <li><label><input type="radio" name="item12" id="item12_1">1</label></li>
+                    <li><label><input type="radio" name="item12" id="item12_2">null</label></li>
+                    <li><label><input type="radio" name="item12" id="item12_3">undefined</label></li>
+                    <li><label><input type="radio" name="item12" id="item12_4">运行错误</label></li>
+                </ol>
+            </li>
+        </ul>
+        <button class="btn btn-primary" id="answer_submit">查看结果</button>
+        <div class="alert answer-message" id="answer_message"></div>
+    </div>
+</div>
+<div class="lab-footer"><p>Copyright ©2012-2013 Dangjian. All rights reserved.</p></div>
+
+<script type="text/javascript">
+    $(function () {
+        try {
+            SyntaxHighlighter.all();
+            isSyntaxHighlighted = true;
+        } catch (e) {
+        }
+
+        $(".collapse").collapse();
+    });
+    $('#answer_submit').click(function(){
+        var wrongAnseers = [], message='',css='';
+        if (!$('#item1_2').attr('checked')) wrongAnseers.push(1);
+        if (!$('#item2_1').attr('checked')) wrongAnseers.push(2);
+        if (!$('#item3_2').attr('checked')) wrongAnseers.push(3);
+        if (!$('#item4_4').attr('checked')) wrongAnseers.push(4);
+        if (!$('#item5_1').attr('checked')) wrongAnseers.push(5);
+        if (!$('#item6_4').attr('checked')) wrongAnseers.push(6);
+        if (!$('#item7_4').attr('checked')) wrongAnseers.push(7);
+        if (!$('#item8_3').attr('checked')) wrongAnseers.push(8);
+        if (!$('#item9_1').attr('checked')) wrongAnseers.push(9);
+        if (!$('#item10_2').attr('checked')) wrongAnseers.push(10);
+        if (!$('#item11_3').attr('checked')) wrongAnseers.push(11);
+        if (!$('#item12_1').attr('checked')) wrongAnseers.push(12);
+        if (wrongAnseers.length > 0) {
+            message = '你总共错了<strong>' + wrongAnseers.length + '</strong>个题（' + wrongAnseers.join(',') + ')<br>';
+        }
+        if (wrongAnseers.length === 0) {
+            message += "干得漂亮。全部正确";
+            css = 'alert-success';
+        } else if (wrongAnseers.length <= 4) {
+            message += "还不错呀，继续努力了~";
+            css = 'alert-info';
+        } else if (wrongAnseers.length <= 8) {
+            message += "基础知识掌握的不够啊";
+            css = 'alert-warning';
+        } else {
+            message += "你学过JavaScript吗？";
+            css = 'alert-danger';
+        }
+        message += '<br>查看解答：<a href="/?p=252">JavaScript基础测试题解答</a>';
+        $('.answer-message').removeClass('alert-success alert-info alert-warning alert-danger').addClass('show ' + css).html(message);
+    });
+</script>
+</body>
+</html>

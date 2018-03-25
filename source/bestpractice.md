@@ -30,37 +30,37 @@ permalink: /bestpractice/
 
 ### 第六章
 
-*   [引用3：Undoing html.css and using debug scaffolding](/bestpractice/best-practice-6-3.html)
-*   [引用4：NO CSS RESET](/bestpractice/best-practice-6-4.html)
-*   [引用6：CSS Tools: Reset CSS](/bestpractice/best-practice-6-6.html)
-*   [引用7：Order of the Day: CSS Properties](/bestpractice/best-practice-6-7.html)
-*   [引用9：9 Most Common IE Bugs and How to Fix Them](/bestpractice/best-practice-6-9.html)
+* [引用3：Undoing html.css and using debug scaffolding](/bestpractice/best-practice-6-3.html)
+* [引用4：NO CSS RESET](/bestpractice/best-practice-6-4.html)
+* [引用6：CSS Tools: Reset CSS](/bestpractice/best-practice-6-6.html)
+* [引用7：Order of the Day: CSS Properties](/bestpractice/best-practice-6-7.html)
+* [引用9：9 Most Common IE Bugs and How to Fix Them](/bestpractice/best-practice-6-9.html)
 
 ### 第七章
 
-*   [引用2：To Sprite Or Not To Sprite](/bestpractice/best-practice-7-2.html)
-*   [引用8：don’t use @import](/bestpractice/best-practice-7-8.html)
+* [引用2：To Sprite Or Not To Sprite](/bestpractice/best-practice-7-2.html)
+* [引用8：don’t use @import](/bestpractice/best-practice-7-8.html)
 
 ### 第九章
 
-*   [引用1：Strict mode](/bestpractice/best-practice-9-1.html)
-*   [引用11：JavaScript Micro-Templating](/bestpractice/best-practice-9-11.html)
-*   [引用15：JavaScript MVC](/bestpractice/best-practice-9-15.html)
-*   [引用16：A Comparison of Angular, Backbone, CanJS and Ember](/bestpractice/best-practice-9-16.html)
-*   [引用17：Choosing a JavaScript MVC Framework](/bestpractice/best-practice-9-17.html)
-*   [引用24：How to Make AJAX Requests With Raw Javascript](/bestpractice/best-practice-9-24.html)
+* [引用1：Strict mode](/bestpractice/best-practice-9-1.html)
+* [引用11：JavaScript Micro-Templating](/bestpractice/best-practice-9-11.html)
+* [引用15：JavaScript MVC](/bestpractice/best-practice-9-15.html)
+* [引用16：A Comparison of Angular, Backbone, CanJS and Ember](/bestpractice/best-practice-9-16.html)
+* [引用17：Choosing a JavaScript MVC Framework](/bestpractice/best-practice-9-17.html)
+* [引用24：How to Make AJAX Requests With Raw Javascript](/bestpractice/best-practice-9-24.html)
 
 ### 第十章
 
-*   [引用1，4：浏览器的工作原理：新式网络浏览器幕后揭秘](/bestpractice/best-practice-10-1and4.html)
+* [引用1，4：浏览器的工作原理：新式网络浏览器幕后揭秘](/bestpractice/best-practice-10-1and4.html)
 
 ### 第十二章
 
-*   [引用1：Mobile stats to blow your mind](/bestpractice/best-practice-12-1.html)
-*   [引用2：Mobile taking bigger slice of the real estate Web traffic pie](/bestpractice/best-practice-12-2.html)
-*   [引用11：Convert a Menu to a Dropdown for Small Screens](/bestpractice/best-practice-12-11.html)
-*   [引用12：Responsive Web Design](/bestpractice/best-practice-12-12.html)
-*   [引用13：Why 2013 Is the Year of Responsive Web Design](/bestpractice/best-practice-12-13.html)
+* [引用1：Mobile stats to blow your mind](/bestpractice/best-practice-12-1.html)
+* [引用2：Mobile taking bigger slice of the real estate Web traffic pie](/bestpractice/best-practice-12-2.html)
+* [引用11：Convert a Menu to a Dropdown for Small Screens](/bestpractice/best-practice-12-11.html)
+* [引用12：Responsive Web Design](/bestpractice/best-practice-12-12.html)
+* [引用13：Why 2013 Is the Year of Responsive Web Design](/bestpractice/best-practice-12-13.html)
 
 ## 图书中的示例代码
 

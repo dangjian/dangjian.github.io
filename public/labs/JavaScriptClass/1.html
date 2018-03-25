@@ -1,0 +1,326 @@
+
+<h1 class="lab-title">第一节：JavaScript语法概述</h1>
+<ul class="item-actions">
+    <li><a href="#javascriptclass">Home</a></li>
+    <li><a href="javascript:$('.panel-collapse').collapse('toggle');">expand all</a></li>
+</ul>
+
+<h2 id="case1" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#content1">1. 语句</h2>
+
+<div id="content1" class="panel-collapse collapse in">
+        <pre style="font-size: 16px;"
+             class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+        var a = 2 + 4 ;
+        </pre>
+</div>
+<h2 id="case2" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#content2">2. 变量</h2>
+
+<div id="content2" class="panel-collapse collapse in">
+        <pre style="font-size: 16px;"
+             class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+        var a = 1;
+
+        // 变量的声明和赋值，是分开的两个步骤
+        var a;
+        a = 1;
+
+        // 如果只是声明变量而没有赋值，则该变量的值为undefined。
+        var a;
+        a // undefined
+
+        // 如果一个变量没有声明就直接使用，JavaScript会报错，告诉你变量未定义。
+        x // ReferenceError: x is not defined
+
+        // 可以在同一条var命令中声明多个变量
+        var a,b;
+
+        // JavaScirpt是一种动态类型语言，也就是说，变量的类型没有限制，可以赋予各种类型的值
+        var a = 1;
+
+        a = "hello";
+
+        // JavaScript引擎的工作方式是，先解析代码，获取所有被声明的变量，然后再一行一行地运行。
+        console.log(a);
+        var a = 1;
+
+        // 如上代码等同于：
+        var a;
+        console.log(a);
+        a = 1;
+
+        </pre>
+</div>
+<h2 id="case3" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#content3">3. 标识符</h2>
+
+<div id="content3" class="panel-collapse collapse in">
+        <pre style="font-size: 16px;"
+             class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+        // 最常见的标识符就是变量名和函数名
+        // 第一个字符可以是任意Unicode字母，以及美元符号（$）和下划线（_）
+        arg0
+        _tmp
+        $elem
+        π
+        临时变量
+        // 保留字：arguments、break、case、catch、class、const、continue、debugger、default、delete、do、else、enum、eval、export、extends、false、finally、for、function、if、implements、import、in、instanceof、interface、let、new、null、package、private、protected、public、return、static、super、switch、this、throw、true、try、typeof、var、void、while、with、yield
+        </pre>
+</div>
+<h2 id="case4" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#content4">4. 注释</h2>
+
+<div id="content4" class="panel-collapse collapse in">
+        <pre style="font-size: 16px;"
+             class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+        // 这是单行注释
+
+        /*
+         这是
+         多行
+         注释
+        */
+        </pre>
+</div>
+<h2 id="case5" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#content5">5. 条件语句</h2>
+
+<div id="content5" class="panel-collapse collapse in">
+        <pre style="font-size: 16px;"
+             class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+        if (m === 3) {
+            // then
+        } else {
+            // else
+        }
+
+        if (m === 0) {
+            // ...
+        } else if (m === 1) {
+           // ...
+        } else if (m === 2) {
+           // ...
+        } else {
+           // ...
+        }
+
+        switch (fruit) {
+        case "banana":
+            // ...
+            break;
+        case "apple":
+            // ...
+            break;
+        default:
+            // ...
+        }
+        </pre>
+</div>
+<h2 id="case6" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#content6">6. 循环语句</h2>
+
+<div id="content6" class="panel-collapse collapse in">
+        <pre style="font-size: 16px;"
+             class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+        // while
+        while (condition){
+            // some code here
+        }
+
+        //for
+        for (var i=0; i < arr.length; i++) {
+            console.log(arr[i]);
+        }
+
+        // do...while循环
+        do {
+            // ...
+        } while(condition);
+
+        // break语句和continue语句: break用于在循环体中跳出循环，continue用于不再进行本次循环的后续操作，直接进入下一次循环
+        </pre>
+</div>
+<h2 id="case7" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#content7">7. 数据类型</h2>
+
+<div id="content7" class="panel-collapse collapse in">
+        <pre style="font-size: 16px;"
+             class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+        // 数据类型分为原始类型和复合类型
+        // 1. 原始类型又分成三种:数值（number）、字符串（string）、布尔值（boolean）
+        // 数值
+        var x=3;
+        var y=3.1415926;
+
+        // 字符串
+        var y='hello';
+        var y="hello";
+        y.length;
+        y[0];
+
+        // 布尔值
+        var z= true;
+        // undefined、null、false、0、""
+        if (""){ console.log(true);}
+        // 2. 复合类型: 对象（object）、数组（array）、函数（function）
+        var o = {
+            p: 3,
+            q: function(){
+                // function
+            }
+        }
+
+        var list = [1,2,3,4];
+        var action = function() {
+            // ..
+        }
+
+        // 3. undefined和null
+        var v;
+        v
+        // undefined
+        var v = null;
+        v
+        // null
+        </pre>
+</div>
+<h2 id="case9" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#content9">8. 运算符</h2>
+
+<div id="content9" class="panel-collapse collapse in">
+        <pre style="font-size: 16px;"
+             class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+        // 1. 加法运算
+        1 + 1 // 2
+
+        "1" + "1" // "11"
+        // 转化的基本规则是，如果有一个运算子是字符串，则将另一个也转成字符串，返回两者连接的结果；否则就将两个运算子都转为数值，返回两者的和
+        true + 1
+        // 2
+
+        true + "1"
+        // "true1"
+
+        // 2. 其他算术运算符
+        4-3;
+        4*3;
+        4/3;
+        4%3;
+        ++a;
+        a++;
+        --a;
+        a--;
+
+        // 3. 在其他运算符的情况下，另一个运算子都会被转化成数值类型
+        // 加法运算符的情况
+        1 + "1"
+        // "11"
+
+        // 减法运算符的情况
+        1 - "1"
+        // 0
+        // 4. 方括号运算符
+
+        // 对于数组和字符串，就是按照下标取值。
+        var a = ["a", "b", "c"];
+
+        a[1]
+        // "b"
+        var b = 'abc';
+        a[1]
+        // "b"
+        // 对于对象，就是按照对象的属性名取值
+        var o = { p1:"a", p2:"b"};
+
+        o["p1"]
+        // "a"
+
+        // 5. 比较运算符:== 相等、=== 严格相等、 != 不相等、 !== 严格不相等、 < 小于、  <= 小于或等于、 > 大于、  >= 大于或等于
+        // 5.1 相等运算符的比较规则
+        // undefined和null两者，与自身或互相比较时，结果为true，与其他类型的值比较时，结果都为false
+        null == null // true
+        undefined == undefined // true
+
+        undefined == null // true
+
+        false == null // false
+        0 == null // false
+        // 原始类型的数据会转换成数值类型再进行比较
+        1 == true // true
+        0 == false // true
+
+        "true" == true // false
+
+        '' == 0 // true
+
+        '' == false  // OK
+        '1' == true  // OK
+
+        "2" == true // false
+        2 == true // false
+        2 == false // false
+
+        '\n  123  \t' == 123 // true
+        // 对象与字符串或数值比较时，对象转化成原始类型的值，再进行比较
+        var p = {toString: function(){ return '1'}}
+        p == 1
+        // 5.2 严格相等比较符
+        // 原始类型比较，看它们的值是否相等，不存在类型转换
+        '1' === 1 // false
+        NaN !== NaN  // true
+        // 两个复合类型的量比较时（包括对象、数组、函数），比较它们是否指向同一个对象
+        {} === {}
+        // false
+        var v1 = {};
+        var v2 = v1;
+
+        v1 === v2
+        // true
+        var v1 = undefined;
+        var v2 = undefined;
+
+        v1 === v2
+        // true
+
+        var v1 = null;
+        var v2 = null;
+
+        v1 === v2
+        // true
+
+        6. 布尔运算符： ! 取反运算、AND(&&) 且运算、OR(||) 或运算、三元运算符 ? :
+        // ! 取反运算
+        !true // false
+
+        !false // true
+        !undefined // true
+        !null // true
+        !0 // true
+        !NaN // true
+        !"" // true
+
+        // AND(&&) 且运算：如果第一个运算子的值为true，则返回第二个运算子的值；如果第一个运算子的值为false，则直接返回该值，且不再对第二个运算子求值。
+        "t" && "" // ""
+        "t" && "f" // "f"
+        "" && "f" // ""
+        "" && "" // ""
+
+        // OR(||) 或运算：如果第一个运算子的值为true，则返回该值，且不再对第二个运算子求值；如果第一个运算子的值为false，则返回第二个运算子的值。
+        "t" || "" // "t"
+        "t" || "f" // "t"
+        "" || "f" // "f"
+        "" || "" // ""
+
+        // 三元运算符 ? :
+        "t" ? true : false // true
+
+        0 ? true : false // false
+
+        // 7. 逻辑运算符
+        // 或运算（or），符号为|，表示两个二进制位中有一个为1，则结果为1，否则为0。
+        // 与运算（and），符号为&，表示两个二进制位都为1，则结果为1，否则为0。
+        // 否运算（not），符号为～，表示将一个二进制位变成相反值。
+        // 异或运算（xor），符号为ˆ，表示两个二进制位中有且仅有一个为1，则结果为1，否则为0。
+        // 左移运算（left shift），符号为<<，详见下文解释。
+        // 右移运算（right shift），符号为>>，详见下文解释。
+        // 不带符号位的右移运算（zero filled right shift），符号为>>>。
+
+        // new运算符:1.创建一个没有成员的对象。2. 它为该对象调用构造函数，并将一个指针作为 this 指针传递给新创建的对象。3. 然后，构造函数根据传递给它的参数初始化该对象。
+        my_object = new Object;
+        my_array = new Array();
+        my_date = new Date("Jan 5 1996");
+        </pre>
+</div>

@@ -1,9 +1,8 @@
 # Header
 
 menu:
-  主页: /
-  Web前端开发最佳实践: /2015/01/15/web-frontend-development-best-practices-correct
   关于我: /about
+  Web前端开发最佳实践: /bestpractice
 # SubNav
 subnav:
   github: "https://github.com/dangjian"
@@ -108,7 +107,5 @@ slider:
 # 智能菜单
 # 如不需要，将该对应项置为false
 # 比如
-#smart_menu:
-#  friends: false
 smart_menu:
-  innerArchive: '所有文章'
+  friends: false
