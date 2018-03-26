@@ -109,3 +109,5 @@ slider:
 # 比如
 smart_menu:
   friends: false
+  innerArchive: '所有文章'
+

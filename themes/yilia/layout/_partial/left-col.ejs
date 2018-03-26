@@ -17,14 +17,12 @@
 			<% for (var i in theme.menu){ %>
 				<li><a href="<%- url_for(theme.menu[i]) %>"><%= i %></a></li>
 	        <%}%>
-			</ul>
-		</nav>
-		<nav class="header-smart-menu">
-    		<% for (var i in theme.smart_menu){ %>
-    			<% if(theme.smart_menu[i]){ %>
-    			<a q-on="click: openSlider(e, '<%-i%>')" href="javascript:void(0)"><%= theme.smart_menu[i] %></a>
-    			<% } %>
-            <%}%>
+        <% for (var i in theme.smart_menu){ %>
+        <% if(theme.smart_menu[i]){ %>
+        <li><a q-on="click: openSlider(e, '<%-i%>')" href="javascript:void(0)"><%= theme.smart_menu[i] %></a></li>
+        <% } %>
+        <%}%>
+      </ul>
 		</nav>
 		<nav class="header-nav">
 			<div class="social">
@@ -33,5 +31,5 @@
 		        <%}%>
 			</div>
 		</nav>
-	</header>		
+	</header>
 </div>

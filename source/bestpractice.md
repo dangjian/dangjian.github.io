@@ -2,6 +2,7 @@
 layout: post
 title: 《Web前端开发最佳实践》
 permalink: /bestpractice/
+noDate: true
 ---
 
 这个专题页专门用于图书《Web前端开发最佳实践》相关的资源分享及错误收集。大家有任何反馈意见或者技术讨论，都可以在这个页面留言。

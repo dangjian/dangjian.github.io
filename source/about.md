@@ -2,6 +2,7 @@
 layout: page
 title: 关于我
 permalink: /about/
+noDate: true
 ---
 
 ## 关于：党建
