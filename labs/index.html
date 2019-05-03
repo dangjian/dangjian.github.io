@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="labs">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title ng-bind="title || '实验项目'"></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link href="common/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="common/css/common.css" rel="stylesheet" />
+    <link href="common/Highlighter/shCore.css" rel="stylesheet"/>
+    <link href="common/Highlighter/ShDefault.css" rel="stylesheet"/>
+
+    <script src="common/js/jquery.min.js"></script>
+    <script src="common/js/angular.min.js"></script>
+    <script src="common/js/bootstrap.min.js"></script>
+    <script src="common/js/angular-route.min.js"></script>
+    <script type="text/javascript" src="common/js/shCore.js"></script>
+    <script type="text/javascript" src="common/js/shLanguage.js"></script>
+    <script type="text/javascript" src="common/js/shLegacy.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/labs">首页</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="https://github.com/dangjian">Github</a></li>
+                <li>
+                    <a href="/">博客</a>
+                </li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class="container">
+    <div ng-view onload="compileCode()"></div>
+</div>
+<script src="labs.js"></script>
+<script type="text/javascript" src="pathmenu/js/pathmenu.jquery.js"></script>
+</body>
+</html>
