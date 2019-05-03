@@ -18,6 +18,7 @@ date: 2016-12-03
 7. 鼓励在项目中使用新技术，新版本
 
 <!-- more -->
+
 ## 技术架构
 1. 擅长技术领域：Web，VR，App（android，iOS），Winform
 2. 基本架构：客户端 （App，Web，Winform） + API （oAuth） + 微服务

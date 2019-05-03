@@ -12,6 +12,7 @@ date: 2016-08-20
 这是一份用于交付的项目安全报告范例，项目使用了Azure云服务或者国内的阿里云华为云服务。
 
 <!-- more -->
+
 ## Azure云版本
 
 1. Redirect All HTTP Traffic to HTTPS

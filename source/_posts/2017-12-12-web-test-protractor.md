@@ -19,6 +19,7 @@ date: 2017-12-12
 * protractor：[英文官网](http://www.protractortest.org) 
 * [WebDriverManager](https://github.com/bonigarcia/webdrivermanager)
 * 快速了解protractor的一个[教程](http://objectpartners.github.io/angular-training/lectures/lecture-11.html) 
+
 <!-- more -->
 
 ### 了解：
