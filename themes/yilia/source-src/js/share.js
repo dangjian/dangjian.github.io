@@ -41,7 +41,9 @@ function handleClick(type, opts) {
 		generate('https://twitter.com/intent/tweet?text=<%-sTitle%>&url=<%-sUrl%>&via=<%-config.url%>', opts)
 	} else if (type === 'google') {
 		generate('https://plus.google.com/share?url=<%-sUrl%>', opts)
-	} else if (type === 'weixin') {
+	} else if (type === 'linkedin') {
+    generate('http://www.linkedin.com/shareArticle?mini=true&url=<%-sUrl%>', opts)
+  }  else if (type === 'weixin') {
 		showWX();
 	}
 }
